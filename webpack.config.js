@@ -1,5 +1,6 @@
 let path = require('path');
 let HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 module.exports = {
 	mode: 'development', // 开发模式，还可设置为 production none 不同模式，输出文件不同 可选的
 	entry: './app.js', //打包入口文件  可选的，这里你是单文件入口
@@ -26,12 +27,8 @@ module.exports = {
 			// loader 还可写成对象形式的，这样可给loader传递参数，但是loader参数多的话，我们往往独立配置一下
 			{
 				test: /\.css$/,
-				use: [
-					{
-						loader: 'style-loader'
-					},
-					'css-loader'
-				]
+				// use: [MiniCssExtractPlugin.loader, 'style-loader','css-loader']  包含 style-loader 会报 window is not defined
+				use: [MiniCssExtractPlugin.loader, 'css-loader']
 			},
 			{
 				test: /\.js$/,
@@ -61,11 +58,15 @@ module.exports = {
 		new HtmlWebpackPlugin({
 			template: './index.html', //指定模板
 			filename: 'index.html', //打包后的名字，默认和模板名一样,
-			hash: true, //引用的脚本名后加哈希
-	/* 		minify: {
+			hash: true //引用的脚本名后加哈希
+			/* 		minify: {
 				removeAttributeQuotes:false, //删除双引号
 				collapseWhitespace: true //生成的html合并空行
 			} */
+		}),
+		new MiniCssExtractPlugin({
+			filename: '[name].css',
+			chunkFilename: '[id].css'
 		})
 	]
 };
