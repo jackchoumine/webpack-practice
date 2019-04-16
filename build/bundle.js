@@ -66,66 +66,80 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./app.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
 /******/ })
 /************************************************************************/
-/******/ ({
-
-/***/ "./app.js":
-/*!****************!*\
-  !*** ./app.js ***!
-  \****************/
-/*! no exports provided */
+/******/ ([
+/* 0 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _src_b_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./src/b.js */ \"./src/b.js\");\n/* harmony import */ var _src_b_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_src_b_js__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _src_index_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./src/index.css */ \"./src/index.css\");\n/* harmony import */ var _src_index_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_src_index_css__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _src_es6__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./src/es6 */ \"./src/es6.js\");\nlet index = __webpack_require__(/*! ./src/index/index.js */ \"./src/index/index.js\"); //commonJS 模块 \n\n\n // es6 模块\n\n\n\nObject(_src_es6__WEBPACK_IMPORTED_MODULE_2__[\"default\"])();\nindex();\n_src_b_js__WEBPACK_IMPORTED_MODULE_0___default()();\n\n//# sourceURL=webpack:///./app.js?");
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _src_b_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
+/* harmony import */ var _src_b_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_src_b_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _src_index_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(3);
+/* harmony import */ var _src_index_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_src_index_css__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _src_es6__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(4);
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(5);
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_3__);
+let index = __webpack_require__(1); //commonJS 模块
+
+
+ // es6 模块
+
+
+
+
+Object(_src_es6__WEBPACK_IMPORTED_MODULE_2__["default"])();
+index();
+_src_b_js__WEBPACK_IMPORTED_MODULE_0___default()();
+console.log(jquery__WEBPACK_IMPORTED_MODULE_3___default()('h1'));
+console.log(jquery__WEBPACK_IMPORTED_MODULE_3___default()('h1'));
+console.log('添加实时预览');
 
 /***/ }),
-
-/***/ "./src/b.js":
-/*!******************!*\
-  !*** ./src/b.js ***!
-  \******************/
-/*! no static exports found */
+/* 1 */
 /***/ (function(module, exports) {
 
-eval("function b() {\n  console.log('b');\n}\n\nmodule.exports = b;\n\n//# sourceURL=webpack:///./src/b.js?");
+function index() {
+  console.log('index');
+}
+
+module.exports = index;
 
 /***/ }),
+/* 2 */
+/***/ (function(module, exports) {
 
-/***/ "./src/es6.js":
-/*!********************!*\
-  !*** ./src/es6.js ***!
-  \********************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+function b() {
+  console.log('b');
+}
 
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\nconst arr = [1, 2, 3];\n\nconst iAmJavascriptES6 = () => console.log(...arr);\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (iAmJavascriptES6);\n\n//# sourceURL=webpack:///./src/es6.js?");
+module.exports = b;
 
 /***/ }),
-
-/***/ "./src/index.css":
-/*!***********************!*\
-  !*** ./src/index.css ***!
-  \***********************/
-/*! no static exports found */
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("// extracted by mini-css-extract-plugin\n\n//# sourceURL=webpack:///./src/index.css?");
+// extracted by mini-css-extract-plugin
 
 /***/ }),
+/* 4 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-/***/ "./src/index/index.js":
-/*!****************************!*\
-  !*** ./src/index/index.js ***!
-  \****************************/
-/*! no static exports found */
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+const arr = [1, 2, 3];
+
+const iAmJavascriptES6 = () => console.log(...arr);
+
+/* harmony default export */ __webpack_exports__["default"] = (iAmJavascriptES6);
+
+/***/ }),
+/* 5 */
 /***/ (function(module, exports) {
 
-eval("function index() {\n  console.log('index');\n}\n\nmodule.exports = index;\n\n//# sourceURL=webpack:///./src/index/index.js?");
+module.exports = jQuery;
 
 /***/ })
-
-/******/ });
+/******/ ]);

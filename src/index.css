@@ -1,5 +1,8 @@
-body{
-    background-color: red;
-}
 /* css 间相互引用 */
-@import url('./index/index.css')
+@import url('./index/index.css');
+@import url('./index/index.css');
+@import url('./index/index.css');
+
+body {
+  background-color: red;
+}
