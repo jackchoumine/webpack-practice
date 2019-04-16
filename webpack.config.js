@@ -17,18 +17,6 @@ module.exports = {
 		open: true,
 		compress: true //收使用压缩文件
 	},
-	// 插件配置
-	plugins: [
-		new HtmlWebpackPlugin({
-			template: './index.html', //指定模板
-			filename: 'index.html', //打包后的名字，默认和模板名一样,
-			hash: true, //引用的脚本名后加哈希
-			minify: {
-				removeAttributeQuotes: true, //删除双引号
-				collapseWhitespace: true //生成的html合并空行
-			}
-		})
-	],
 	module: {
 		rules: [
 			// css-loader 处理 @import 这种语法
@@ -47,14 +35,37 @@ module.exports = {
 			},
 			{
 				test: /\.js$/,
-				exclude: /node_modules/, 
+				exclude: /node_modules/,
 				use: {
-          loader: 'babel-loader',
-        /*   options: {
+					loader: 'babel-loader'
+					/*   options: {
             presets: ['es-2015']
           } */
-        },
+				}
+			},
+			{
+				test: /\.html$/,
+				use: [
+					{
+						loader: 'html-loader',
+						options: {
+							minimize: true
+						}
+					}
+				]
 			}
 		]
-	}
+	},
+	// 插件配置
+	plugins: [
+		new HtmlWebpackPlugin({
+			template: './index.html', //指定模板
+			filename: 'index.html', //打包后的名字，默认和模板名一样,
+			hash: true, //引用的脚本名后加哈希
+	/* 		minify: {
+				removeAttributeQuotes:false, //删除双引号
+				collapseWhitespace: true //生成的html合并空行
+			} */
+		})
+	]
 };
