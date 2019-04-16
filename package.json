@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "pack": "webpack",
-    "dev": "webpack-dev-server",
+    "dev": "webpack-dev-server --mode development --open",
     "start": "webpack-dev-server --inline --port 8080 --host 127.0.0.1 --content-base ./build"
   },
   "keywords": [],
