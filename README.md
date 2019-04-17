@@ -132,7 +132,20 @@ webpack 实际执行的是如下命令：
 |           |                                                              |                |                                                              |
 |           |                                                              |                |                                                              |
 
+## 模块解析规则
+webpack有默认的[模块解析（查找）规则](https://webpack.docschina.org/concepts/module-resolution/#webpack-%E4%B8%AD%E7%9A%84%E8%A7%A3%E6%9E%90%E8%A7%84%E5%88%99)，当然可以指定模块的解析规则。在`resolve`定义规则：
 
+```js
+resolve:{
+    alias:{
+        aliasName:'路径',//指定引入模块的路径，这样的配置可让我们引入模块时不必写很长的路径
+        aliasName$:'精确匹配',
+    },
+    extensions:['.js','.vue','.json']//指定引入模块的扩展名，设置后引入时不必写扩展名
+}
+```
+
+[其他配置](https://webpack.docschina.org/configuration/resolve/#resolve)
 
 ## devServer 配置
 
@@ -265,21 +278,20 @@ plugins: [
 
 ## 使用 loader 处理模块
 
-module 中有一个属性，`noParse`,指定**不用解析**的模块，如果明确知道模块中无其他依赖（没有require、import语句），可这么做以提高打包效率。**直接打包**到输出文件中。比如在想要在输出文件中包含`jQuery`代码，使用此方法。
-
-和 **externals**的区别，声明为外部依赖，**不解析也不打包**。比如通过`cdn`使用jQuery，就可以把jquery声明为外部依赖。理论上，使用externals性能更好。
-
-webpack 中，所有类型的文件都可作为**模块**处理，这是webpack特有的功能（其他类似的工具不具备）。
+webpack 只能理解**js**和**json**文件，其他类型的文件可使用相应的loader处理，这是webpack特有的功能（其他类似的工具不具备）。使用loader，往往需要在`module.rules`数组中配置：
 
 - test 字段：标识出需要loader处理的文件，通常用**正则表达式**或者**正则数组**表示；
 - include和exclude字段执行包含或者排除的文件，值是**字符串**或者**字符串数组**；
 - use 字段：表示 test 标识的文件，需要哪个 loader 处理，是loader对象数组。
-- loader 在 module.rules 中配置。
 
 loader 特性：
 - 链式处理： 链式的 loader 将按照出现的顺序相反的顺序执行（即从右往左），前一个loader的处理结果将作为后一个的输入，可用`enforce`放到最后或者最前；
 - 可用` options` 配置 loader，也可单独配置；
 - loader 的名字都是 xxx-loader。
+
+module 中有一个属性，`noParse`,指定**不用解析**的模块，如果明确知道模块中无其他依赖（没有require、import语句），可这么做以提高打包效率。**直接打包**到输出文件中。比如在想要在输出文件中包含`jQuery`代码，使用此方法。
+
+和 **externals**的区别，声明为外部依赖，**不解析也不打包**。比如通过`cdn`使用jQuery，就可以把jquery声明为外部依赖。理论上，使用externals性能更好。
 
 希望能把css文件当成模块处理，并且自动插去到html中，需要css-loader 和 style-loader。
 安装loader:
@@ -327,6 +339,7 @@ loader 配置参数的方式：
 - options ：在use数组的loader对象中，可增加`options`字段配置；
 - querystring: 在loader名字后面添加 querystring，` 'css-loader?url` ;
 - 在引入语句中配置：` import 'style-loader!css-loader?url=false!./style/index.css'`
+- 还可以在CLI中指定：` --module-bind jade-loader --module-bind 'css=style-loader!css-loader'`
 
 options:
 ```js
@@ -342,6 +355,9 @@ options:
 ### 将 ES6 语法编译成 ES5
 
 
+## 使用插件
+
+loader 用于转化模块，而插件则用于执行某个任务，比如打包优化、资源管理、注入环境变量等。使用插件，需要`require`它，然后在`plugins`数组中new一个元素，还可以传入相关参数。
 
 ### 使用 html 模板生成 html
 
@@ -373,4 +389,10 @@ plugins: [
   ]
 ```
 [参考文档](https://github.com/jantimon/html-webpack-plugin#options)
+
+### webpack 处理 CSS
+
+
+
+#### 打包CSS
 

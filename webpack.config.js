@@ -14,6 +14,12 @@ module.exports = {
 	externals: {
 		jquery: 'jQuery'
 	},
+	resolve: {
+		alias: {
+			'@': path.join(__dirname, 'src')
+		},
+		extensions: ['.js', '.json']
+	},
 	//开服务器配置，将打包后的文件部署在该服务器上
 	devServer: {
 		host: 'localhost',
