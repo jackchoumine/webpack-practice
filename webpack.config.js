@@ -5,6 +5,16 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 module.exports = {
 	watch: true,
 	mode: 'none', // 开发模式，还可设置为 production none 不同模式，输出文件不同 可选的
+	devtool: 'none', //打包后的代码,所有源文件合成一个文件，看不大各个模块，调试困难。
+	//devtool: 'eval',//生成后的代码 - 每个模块相互分离，并用模块名称进行注释。可以看到 webpack 生成的代码。源文件和打包后的文件无法映射，调试困难
+	//devtool: 'source-map',//原始源代码 - 每个模块相互分离，并用模块名称进行注释。你会看到转译之前的代码,调试方便。
+	//devtool: 'eval-source-map',//原始源代码
+	//	devtool: 'cheap-source-map',//转换过的代码（仅限行）--- 每个模块相互分离，并用模块名称进行注释。可以看到 webpack 转换前、loader 转译后的代码。生成的代码和源文件行数无法一一对应，调试困难。
+	// devtool: 'cheap-module-eval-source-map',//原始代码，调试方便
+	// devtool: 'inline-cheap-source-map',//转换过的代码（仅限行）调试困难
+	// devtool: 'inline-source-map',//原始源代码 调试方便
+  devtool: 'nosources-source-map',//无源代码内容 -source map 中不包含源代码内容，根本无法调试
+  // 综上：代码调试容易程度：原始代码（eval-source-map、source-map、cheap-module-eval-source-map）> 转化过的代码 （cheap-source-map）>  生成后的代码 （eval）> 打包后的代码(none)
 	entry: './app.js', //打包入口文件  可选的，这里你是单文件入口
 	output: {
 		//打包输出配置 非必须 默认是 dist/main.js
@@ -44,7 +54,7 @@ module.exports = {
 					'^/getDomainCategory': ''
 				},
 				bypass: function(req, res, proxyOptions) {
-					if (req.headers.accept.indexOf('html') !== -1) {
+					if (req.headers.accept && req.headers.accept.indexOf('html') !== -1) {
 						console.log('Skipping proxy for browser request.');
 						return '/index.html';
 					}

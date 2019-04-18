@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "pack": "webpack",
-    "dev": "webpack-dev-server --mode development --open",
+    "dev": "webpack-dev-server --mode development --open --colors",
+    "prod": "webpack-dev-server --mode=production --open --colors",
     "start": "webpack-dev-server"
   },
   "keywords": [],

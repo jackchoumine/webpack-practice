@@ -7,7 +7,7 @@ iAmJavascriptES6();
 index();
 b();
 let button = document.querySelector('button');
-console.log(button);
+console.log(button1);
 console.log($(button));
 $(button).on('click', get);
 function get() {
