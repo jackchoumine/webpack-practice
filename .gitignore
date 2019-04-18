@@ -8,6 +8,8 @@ Thumbs.db
 ehthumbs.db
 Desktop.ini
 build
+dist
+UsersAdministratorAppDataRoamingnpm-cache
 # Linux
 .directory
 *~

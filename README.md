@@ -221,6 +221,34 @@ proxy`'/getDomainCategory'`和`target`的含义是：请求路径匹配`/getDoma
 
 [关于代理更多信息](<https://webpack.docschina.org/configuration/dev-server/#devserver-proxy>)
 
+## devTool
+devTool 属性用于配置打包的代码映射到源代码方式，因为打包后的代码和源码有了很多区别，如果不采用合理映射，会使得调试困难和构建时间很长。选择好的映射方式将使得调试更加容易，打包时间也不会那么长。
+devTool各个选项的映射情况和构建时间如下：
+
+| 值     | 构建速度 | 重新构建速度|代码品质|适用环境 | 调试难度 |
+| ----- | ------ | --------- | ------- | -------- | -------- |
+| (none)(默认值) | `❤❤❤❤❤❤` | `❤❤❤❤❤❤`| 打包后的代码 |<span style="color:green;">生产</span> |`★★★★★`|
+|eval|`❤❤❤❤❤❤`|`❤❤❤❤❤❤`|生成后的代码（不能正确显示行数）|开发|`★★★★★`|
+|cheap-eval-source-map|`❤❤❤`|`❤❤❤❤❤`|转换后的代码（仅限行）|开发|`★★`|
+|cheap-module-eval-source-map|`❤❤`|`❤❤❤`|转换后的代码（仅限行）|开发|`★★`|
+|eval-source-map|`❤❤❤`|`❤❤`|<span style="color:red;">原始源代码代码</span>|<span style="color:green;">生产</span>|`★`|
+|cheap-module-source-map|`❤❤`|`❤❤❤`|<span style="color:red;">原始源代码代码</span>|<span style="color:green;">生产</span>|`★`|
+|inline-cheap-source-map|`❤❤❤`|`❤❤`|转换后的代码（仅限行）|开发|`★★`|
+|inline-cheap-module-source-map|`❤❤❤`|`❤❤`|原始源代码（仅限行）|开发|`★`|
+|source-map|`❤`|`❤`|<span style="color:red;">原始源代码代码</span>|<span style="color:green;">生产</span>|`★`|
+|inline-source-map|`❤`|`❤`|<span style="color:red;">原始源代码代码</span>|开发|`★`|
+|hidden-source-map|`❤`|`❤`|<span style="color:red;">原始源代码代码</span>|<span style="color:green;">生产</span>|`★`|
+|nosources-source-map|`❤`|`❤`|没有原始源代码代码|<span style="color:green;">生产</span>|`★★★★★`|
+
+选项值的几个组合的含义：
+
+- eval：生成代码，每个模块`eval` 执行，存在sourceURL，文件大，速度快，生产环境不宜使用；
+- cheap：低开销的，只映射行数，不映射列数（调试时不需要太关心列数），速度较快；
+- source-map： 产生`.map`文件，映射行列，速度慢；
+- module：支持babel这类预编译工具。
+
+开发阶段选调试难度低的，构建速度也比较快的，从表中看，`cheap-module-eval-source-map` 适合开发环境，而`cheap-module-source-map`适合生产环境。
+
 ## 使用插件
 
 插件关注某个**编译过程**，功能强大。使用插件只需 require 它，然后添加到` plugins` 数组中，new 一个插件对象。

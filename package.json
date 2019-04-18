@@ -4,9 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "pack": "webpack",
+    "build": "webpack --mode=production --colors",
     "dev": "webpack-dev-server --mode development --open --colors",
-    "prod": "webpack-dev-server --mode=production --open --colors",
     "start": "webpack-dev-server"
   },
   "keywords": [],
