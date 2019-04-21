@@ -23,6 +23,7 @@
     },
     methods: {
       onClick() {
+        let nihao=''
         console.log('Hello world');
       }
     }
