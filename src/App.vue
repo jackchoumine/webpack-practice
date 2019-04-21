@@ -7,7 +7,9 @@
     >
       {{ item.name }}
     </div>
-    <button @click="onClick">Button</button>
+    <button @click="onClick">
+      Button
+    </button>
   </div>
 </template>
 <script>
