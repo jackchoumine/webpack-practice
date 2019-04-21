@@ -20,7 +20,7 @@ module.exports = {
 		alias: {
 			'@': path.join(__dirname, 'src')
 		},
-		extensions: ['.js', '.json']
+		extensions: ['.js', '.json','.vue']
 	},
 	//开服务器配置，将打包后的文件部署在该服务器上
 	devServer: {
@@ -70,8 +70,13 @@ module.exports = {
 					/*   options: {
             presets: ['es-2015']
           } */
-				}
-			},
+				},
+
+      },
+      {
+        test:/\.vue$/,
+        loader:'vue-loader'
+      },
 			{
 				test: /\.html$/,
 				use: [
