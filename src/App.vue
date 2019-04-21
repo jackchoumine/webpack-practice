@@ -2,7 +2,8 @@
   <div id="app">
     Hello, {{ name }}!
     <div
-      v-for="item of items" :key="item.id"
+      v-for="item of items"
+      :key="item.id"
     >
       {{ item.name }}
     </div>
