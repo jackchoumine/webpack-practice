@@ -2,13 +2,11 @@
   <div id="app">
     Hello, {{ name }}!
     <div
-      v-for="item of items"
-      :key="item.id"
+      v-for="item of items":key="item.id"
     >
       {{ item.name }}
     </div>
-    <button @click="onClick">
-      Button
+    <button @click="onClick">Button
     </button>
   </div>
 </template>
