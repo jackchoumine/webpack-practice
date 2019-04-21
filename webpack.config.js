@@ -2,12 +2,13 @@ let path = require('path');
 let webpack = require('webpack');
 let HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
 module.exports = {
 	watch: true,
-	// mode: 'none', // 开发模式，还可设置为 production none 不同模式，输出文件不同 可选的
+	mode: 'development', // 开发模式，还可设置为 production none 不同模式，输出文件不同 可选的
 	// devtool: 'cheap-module-source-map', //生产环境
 	devtool: 'cheap-module-eval-source-map', //开发环境
-	entry: './app.js', //打包入口文件  可选的，这里你是单文件入口
+	entry: './src/index.js', //打包入口文件  可选的，这里你是单文件入口
 	output: {
 		//打包输出配置 非必须 默认是 dist/main.js
 		path: path.resolve(__dirname, 'build'), //打包问你安输出路径，要求绝对路径
@@ -75,7 +76,7 @@ module.exports = {
       },
       {
         test:/\.vue$/,
-        loader:'vue-loader'
+        use:'vue-loader'
       },
 			{
 				test: /\.html$/,
@@ -109,6 +110,7 @@ module.exports = {
 			chunkFilename: '[id].css'
 		}),
 		// 开启 hot 就要调用该插件，否则会提示错误
-		new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new VueLoaderPlugin()
 	]
 };

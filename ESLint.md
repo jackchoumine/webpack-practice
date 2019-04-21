@@ -20,5 +20,12 @@ options 我们一般在配置文件中设置好。
 ```bash
 eslin --init # 在当前目录中生成一个配置文件,会依次询问你需要的风格
 ```
+不同系统的换行不一样，
+`\r`(Carriage Return)---将光标移到行首；
+`\n`(Line Feed)----将光标移动到下一格。
+Unix使用`\n`
+Mac 使用 `\r`
+Window 使用`\r\n`
+
 公司只有我一个前端，就使用腾讯前团队的vue编码风格就好了。
 [eslint-config-alloy](https://eslint.vuejs.org/user-guide/#installation)
