@@ -3,7 +3,6 @@
     Hello, {{ name }}!
     <div
       v-for="item of items"
-      
       :key="item.id"
     >
       {{ item.name }}
