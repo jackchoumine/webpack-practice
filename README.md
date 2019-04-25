@@ -380,9 +380,6 @@ options:
 ```
 配置项可在相关文档中查看
 
-### 将 ES6 语法编译成 ES5
-
-
 ## 使用插件
 
 loader 用于转化模块，而插件则用于执行某个任务，比如打包优化、资源管理、注入环境变量等。使用插件，需要`require`它，然后在`plugins`数组中new一个元素，还可以传入相关参数。
@@ -471,4 +468,44 @@ options: {
         cacheDriectory:true,//会打编译结果缓存在 node_modules/.cache 下
         plugins:['transform-runtime']
 		}
+```
+关于 babel 选项：
+presets告诉babel转换的源码使用哪些新语法特性，可是同时使用多个新语法特性。
+推荐使用`env`,该语法特性包含了`es5、es6、es7`。
+`cacheDriectory`缓存编译文件。
+`transform-runtime`减少代码冗余。
+
+### 处理 scss
+
+安装依赖：
+```bash
+npm i -D node-sass sass-loader
+```
+css文件一次处理顺序是：`sass-loader`、`css-loader`、`style-loader`。
+sass-loader 将 scss 转为 css,css-loader 处理 css 模块，style-loader 将 css 字符串混入到 html 中，也可用 `MiniCssExtractPlugin` 插件将 css 提取成独立的文件。
+
+在 .vue 中使用 scss:
+```js
+<style scoped lang="scss">
+  .container {
+    background-color: red;
+    .inner-container {
+      background-color: blue;
+      margin:20px;
+    }
+  }
+</style>
+```
+//TODO:编辑器会提示错误，很奇怪。
+打包结果：
+```css
+<style type="text/css">
+.container[data-v-7ba5bd90] {
+  background-color: red;
+}
+.container .inner-container[data-v-7ba5bd90] {
+    background-color: blue;
+    margin: 20px;
+}
+</style>
 ```

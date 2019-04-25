@@ -16,7 +16,7 @@ module.exports = {
 		filename: 'bundle.js' //在打包后的文件名后加上哈希前5位
 	},
 	externals: {
-		jquery: 'jQuery'
+		jquery: 'jquery'
 	},
 	resolve: {
 		alias: {
@@ -64,9 +64,10 @@ module.exports = {
         use:'vue-loader'
       },
 			{
-				test: /\.css$/,
+				test: /\.scss$/,
 				// use: [MiniCssExtractPlugin.loader, 'style-loader','css-loader']  包含 style-loader 会报 window is not defined
-				use: [MiniCssExtractPlugin.loader, 'css-loader']
+				// use: [MiniCssExtractPlugin.loader, 'css-loader','sass-loader']
+				use: ['style-loader', 'css-loader','sass-loader']
 			},
 			{
 				test: /\.js$/,
@@ -108,10 +109,10 @@ module.exports = {
       } */
 			//还有其他一些属性
 		}),
-		new MiniCssExtractPlugin({
-			filename: '[name].css',
-			chunkFilename: '[id].css'
-		}),
+		// new MiniCssExtractPlugin({
+		// 	filename: '[name].css',
+		// 	chunkFilename: '[id].css'
+		// }),
 		// 开启 hot 就要调用该插件，否则会提示错误
     new webpack.HotModuleReplacementPlugin(),
     new VueLoaderPlugin()

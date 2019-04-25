@@ -1,15 +1,21 @@
 <template>
   <div id="app">
-    Hello, {{ name }}!
-    <div
-      v-for="item of items"
-      :key="item.id"
-    >
-      {{ item.name }}
+    <div class="container">
+      <div
+        v-for="item of items"
+        :key="item.id"
+        class="inner-container"
+      >
+        {{ item.name }}
+      </div>
+      <button
+        type="button btn-primary"
+        class="btn btn-primary btn-lg btn-block"
+        @click="onClick"
+      >
+        Button
+      </button>
     </div>
-    <button @click="onClick">
-      Button
-    </button>
   </div>
 </template>
 <script>
@@ -23,14 +29,18 @@
     },
     methods: {
       onClick() {
-        let nihao=''
+        let nihao = ''
         console.log('Hello world');
       }
     }
   };
 </script>
-<style>
-  #app {
-    background-color: azure;
+<style scoped lang="scss">
+  .container {
+    background-color: red;
+    .inner-container {
+      background-color: blue;
+      margin:20px;
+    }
   }
 </style>
