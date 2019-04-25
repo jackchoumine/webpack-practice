@@ -5,10 +5,11 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 module.exports = {
 	watch: true,
-	mode: 'development', // 开发模式，还可设置为 production none 不同模式，输出文件不同 可选的
-	// devtool: 'cheap-module-source-map', //生产环境
-	devtool: 'cheap-module-eval-source-map', //开发环境
-	entry: './src/index.js', //打包入口文件  可选的，这里你是单文件入口
+  // mode: 'none', // 开发模式，还可设置为 production none 不同模式，输出文件不同 可选的
+  mode:'development',
+	devtool: 'cheap-module-source-map', //生产环境
+	// devtool: 'cheap-module-eval-source-map', //开发环境
+	entry: ['babel-polyfill','./src/index.js'], //打包入口文件  可选的，这里你是单文件入口
 	output: {
 		//打包输出配置 非必须 默认是 dist/main.js
 		path: path.resolve(__dirname, 'build'), //打包问你安输出路径，要求绝对路径
@@ -58,6 +59,10 @@ module.exports = {
 	module: {
 		// noParse: /jquery|xxjs/,
 		rules: [
+      {
+        test:/.vue$/,
+        use:'vue-loader'
+      },
 			{
 				test: /\.css$/,
 				// use: [MiniCssExtractPlugin.loader, 'style-loader','css-loader']  包含 style-loader 会报 window is not defined
@@ -65,19 +70,17 @@ module.exports = {
 			},
 			{
 				test: /\.js$/,
-				exclude: /node_modules/,
+				exclude: __dirname+'node_modules',
+				include: __dirname+'src',
 				use: {
-					loader: 'babel-loader'
-					/*   options: {
-            presets: ['es-2015']
-          } */
-				},
-
-      },
-      {
-        test:/\.vue$/,
-        use:'vue-loader'
-      },
+					loader: 'babel-loader',
+					options: {
+            presets: ['env'],
+            cacheDriectory:true,
+            plugins:['transform-runtime']
+					}
+				}
+			},
 			{
 				test: /\.html$/,
 				use: [
