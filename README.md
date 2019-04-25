@@ -509,3 +509,30 @@ sass-loader 将 scss 转为 css,css-loader 处理 css 模块，style-loader 将 
 }
 </style>
 ```
+### 使用 fontawesome
+
+安装依赖：
+```bash
+# 基础样式
+npm i -S @fortawesome/fontawesome @fortawesome/vue-fontawesome
+# 免费图标
+npm i -S @fortawesome/fontawesome-free-solide @fortawesome/fontawesome-free-regular @fortawesome/fontawesome-free-brands
+```
+在入口文件（main.js）中引入fontawesome:
+```js
+import {library } from '@fortawesome/fontawesome'
+import solid from '@fortawesome/fontawesome-free-solid'
+import regular from '@fortawesome/fontawesome-free-regular'
+import brands from '@fortawesome/fontawesome-free-brands'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+library.add(solid)
+library.add(regular)
+library.add(brands)
+Vue.component('font-awesome-icon', FontAwesomeIcon) //font-awesome-icon 成为全局组件
+``` 
+在组件两种方式使用：
+```html
+<font-awesome-icon icon="coffee" />
+<i class="fas fa-camera fa-xs"></i>
+<i class="fas fa-camera fa-sm"></i>
+```

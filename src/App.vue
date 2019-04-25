@@ -1,20 +1,21 @@
 <template>
   <div id="app">
     <div class="container">
-      <div
-        v-for="item of items"
-        :key="item.id"
-        class="inner-container"
-      >
+      <div v-for="item of items" :key="item.id" class="inner-container">
         {{ item.name }}
       </div>
-      <button
-        type="button btn-primary"
-        class="btn btn-primary btn-lg btn-block"
-        @click="onClick"
-      >
+      <button type="button btn-primary" class="btn btn-primary btn-lg btn-block" @click="onClick">
         Button
       </button>
+      <font-awesome-icon icon="coffee" />
+      <i class="fas fa-camera fa-xs"></i>
+      <i class="fas fa-camera fa-sm"></i>
+      <i class="fas fa-camera fa-lg"></i>
+      <i class="fas fa-camera fa-2x"></i>
+      <i class="fas fa-camera fa-3x"></i>
+      <i class="fas fa-camera fa-5x"></i>
+      <i class="fas fa-camera fa-7x"></i>
+      <i class="fas fa-camera fa-10x"></i>
     </div>
   </div>
 </template>
@@ -37,10 +38,11 @@
 </script>
 <style scoped lang="scss">
   .container {
-    background-color: red;
+    background-color: #e4e3e3;
+
     .inner-container {
       background-color: blue;
-      margin:20px;
+      margin: 20px;
     }
   }
 </style>

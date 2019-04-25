@@ -64,7 +64,7 @@ module.exports = {
         use:'vue-loader'
       },
 			{
-				test: /\.scss$/,
+				test: /\.(sass|scss|css)$/,
 				// use: [MiniCssExtractPlugin.loader, 'style-loader','css-loader']  包含 style-loader 会报 window is not defined
 				// use: [MiniCssExtractPlugin.loader, 'css-loader','sass-loader']
 				use: ['style-loader', 'css-loader','sass-loader']
