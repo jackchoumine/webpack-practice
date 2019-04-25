@@ -5,8 +5,8 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 module.exports = {
 	watch: true,
 	// mode: 'none', // 开发模式，还可设置为 production none 不同模式，输出文件不同 可选的
-	// devtool: 'cheap-module-source-map', //生产环境
-	devtool: 'cheap-module-eval-source-map', //开发环境
+	devtool: 'cheap-module-source-map', //生产环境
+	// devtool: 'cheap-module-eval-source-map', //开发环境
 	entry: './app.js', //打包入口文件  可选的，这里你是单文件入口
 	output: {
 		//打包输出配置 非必须 默认是 dist/main.js
@@ -64,12 +64,13 @@ module.exports = {
 			},
 			{
 				test: /\.js$/,
-				exclude: /node_modules/,
+				exclude: __dirname+'node_modules',
+				include: __dirname+'src',
 				use: {
-					loader: 'babel-loader'
-					/*   options: {
-            presets: ['es-2015']
-          } */
+					loader: 'babel-loader',
+					options: {
+						presets: ['env']
+					}
 				}
 			},
 			{

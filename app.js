@@ -19,3 +19,8 @@ function get() {
 			console.error(err);
 		});
 }
+
+let user = ['jack', 'tom'];
+user.forEach(name => {
+	console.log(name);
+});
