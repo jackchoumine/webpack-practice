@@ -69,7 +69,9 @@ module.exports = {
 				use: {
 					loader: 'babel-loader',
 					options: {
-						presets: ['env']
+            presets: ['env'],
+            cacheDriectory:true,
+            plugins:['transform-runtime']
 					}
 				}
 			},

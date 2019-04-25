@@ -453,3 +453,21 @@ npm install --save-dev babel-polyfill
 ```js
 	entry: ['babel-polyfill','./app.js']
 ```
+transform-runtime 解决代码重复问题：
+①在打包的过程中，babel会在包里提供一些工具函数，而这些工具函数可能会重复的出现在多个模块。
+
+②这样会导致打包的体积过大，所以babel提供了babel-transform-runtime解决这个体积过大的问题
+
+③安装依赖
+```bash
+npm install babel-plugin-transform-runtime --save-dev
+npm install babel-runtime --save
+```
+配置打包缓存，节省编译时间。
+```bash
+		options: {
+            presets: ['env'],
+            cacheDriectory:true,//会打编译结果缓存在 node_modules/.cache 下
+            plugins:['transform-runtime']
+					}
+```
