@@ -424,3 +424,32 @@ plugins: [
 
 #### 打包CSS
 
+## 常见 loader 的使用
+
+### 使用babel
+安装依赖
+```bash
+npm i -D babel-loader babel-core babel-preset-env
+```
+配置webackpack
+```js
+			{
+				test: /\.js$/,
+				exclude: __dirname+'node_modules',
+				include: __dirname+'src', //配置include 和 exclude  否则报 null
+				use: {
+					loader: 'babel-loader',
+					options: {
+						presets: ['env']
+					}
+				}
+			},
+```
+增加对低版本浏览器的兼容：
+```bash
+npm install --save-dev babel-polyfill
+```
+修改入口：
+```js
+	entry: ['babel-polyfill','./app.js']
+```
