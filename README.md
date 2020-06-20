@@ -485,17 +485,17 @@ npm i -D babel-loader babel-core babel-preset-env
 配置 webackpack
 
 ```js
-			{
-				test: /\.js$/,
-				exclude: __dirname+'node_modules',
-				include: __dirname+'src', // 配置include 和 exclude  否则报 null
-				use: {
-					loader: 'babel-loader',
-					options: {
-						presets: ['env']
-					}
-				}
-			},
+{
+	test: /\.js$/,
+	exclude: __dirname+'node_modules',
+	include: __dirname+'src', // 配置include 和 exclude  否则报 null
+	use: {
+		loader: 'babel-loader',
+		options: {
+			presets: ['env']
+		}
+	}
+},
 ```
 
 增加对低版本浏览器的兼容：
