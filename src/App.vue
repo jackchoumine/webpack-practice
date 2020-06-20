@@ -1,11 +1,14 @@
+<!--
+ * @Description: vue 文件
+ * @Date: 2020-06-18 01:25:40
+ * @Author: JackChouMine
+ * @LastEditTime: 2020-06-21 01:21:08
+ * @LastEditors: JackChouMine
+-->
 <template>
   <div id="app">
     <div class="container">
-      <div
-        v-for="item of items"
-        :key="item.id"
-        class="inner-container"
-      >
+      <div v-for="item of items" :key="item.id" class="inner-container">
         {{ item.name }}
       </div>
       <button
@@ -25,32 +28,35 @@
       <i class="fas fa-camera fa-7x" />
       <i class="fas fa-camera fa-10x" />
     </div>
+    <h2>loader 处理图片</h2>
+    <div><img :src="imgSrc" alt="mac图片" /></div>
   </div>
 </template>
 <script>
-  export default {
-    name: 'Hello',
-    data() {
-      return {
-        name: 'World',
-        items: [{ id: 1, name: 'a' }, { id: 2, name: 'b' }, { id: 3, name: 'c' }]
-      }
-    },
-    methods: {
-      onClick() {
-        let nihao = ''
-        console.log('Hello world');
-      }
+import mac from './img/mac.png'
+export default {
+  name: 'Hello',
+  data() {
+    return {
+      imgSrc: mac,
+      name: 'World',
+      items: [{ id: 1, name: 'a' }, { id: 2, name: 'b' }, { id: 3, name: 'c' }],
     }
-  };
+  },
+  methods: {
+    onClick() {
+      let nihao = ''
+      console.log('Hello world')
+    },
+  },
+}
 </script>
 <style scoped lang="scss">
-  .container {
-    background-color: #e4e3e3;
-
-    .inner-container {
-      background-color: blue;
-      margin: 20px;
-    }
+.container {
+  background-color: #e4e3e3;
+  .inner-container {
+    background-color: blue;
+    margin: 20px;
   }
+}
 </style>
