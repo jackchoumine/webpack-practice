@@ -2,7 +2,7 @@
  * @Description: webpack 配置
  * @Date: 2020-06-18 01:25:40
  * @Author: JackChouMine
- * @LastEditTime: 2020-06-21 05:33:19
+ * @LastEditTime: 2020-06-21 05:51:05
  * @LastEditors: JackChouMine
  */
 let path = require('path')
@@ -17,11 +17,12 @@ module.exports = {
   mode: 'development',
   devtool: 'cheap-module-source-map', // 生产环境
   // devtool: 'cheap-module-eval-source-map', //开发环境
-  entry: ['babel-polyfill', './src/index.js'], // 打包入口文件  可选的，这里你是单文件入口
+  entry: { main: './src/index.js', sub: './src/sub.js' }, // 打包入口文件  可选的，这里你是单文件入口
   output: {
     // 打包输出配置 非必须 默认是 dist/main.js
+    publicPath: 'https://test.cdn.com', // js 放在cnd上，插入到html中，src 中会加上 cdn
     path: path.resolve(__dirname, 'build'), // 打包输出路径，要求绝对路径
-    filename: 'bundle.js', // 在打包后的文件名后加上哈希前5位
+    filename: '[name]-[hash].js', // 在打包后的文件名后加上哈希前5位
   },
   externals: {
     jquery: 'jquery',
