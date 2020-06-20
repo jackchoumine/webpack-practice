@@ -2,25 +2,26 @@
  * @Description: webpack 配置
  * @Date: 2020-06-18 01:25:40
  * @Author: JackChouMine
- * @LastEditTime: 2020-06-21 05:01:00
+ * @LastEditTime: 2020-06-21 05:33:19
  * @LastEditors: JackChouMine
  */
 let path = require('path')
 let webpack = require('webpack')
 let HtmlWebpackPlugin = require('html-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 module.exports = {
   watch: true,
   // mode: 'none', // 开发模式，还可设置为 production none 不同模式，输出文件不同 可选的
   mode: 'development',
-  devtool: 'cheap-module-source-map', //生产环境
+  devtool: 'cheap-module-source-map', // 生产环境
   // devtool: 'cheap-module-eval-source-map', //开发环境
-  entry: ['babel-polyfill', './src/index.js'], //打包入口文件  可选的，这里你是单文件入口
+  entry: ['babel-polyfill', './src/index.js'], // 打包入口文件  可选的，这里你是单文件入口
   output: {
-    //打包输出配置 非必须 默认是 dist/main.js
-    path: path.resolve(__dirname, 'build'), //打包输出路径，要求绝对路径
-    filename: 'bundle.js', //在打包后的文件名后加上哈希前5位
+    // 打包输出配置 非必须 默认是 dist/main.js
+    path: path.resolve(__dirname, 'build'), // 打包输出路径，要求绝对路径
+    filename: 'bundle.js', // 在打包后的文件名后加上哈希前5位
   },
   externals: {
     jquery: 'jquery',
@@ -31,17 +32,17 @@ module.exports = {
     },
     extensions: ['.js', '.json', '.vue'],
   },
-  //开服务器配置，将打包后的文件部署在该服务器上
+  // 开服务器配置，将打包后的文件部署在该服务器上
   devServer: {
     host: 'localhost',
     port: 8080,
     contentBase: './build',
-    compress: true, //收使用压缩文件
+    compress: true, // 收使用压缩文件
     headers: {
       'X-foo': '112233',
     },
     historyApiFallback: true,
-    progress: false, //显示进度条
+    progress: false, // 显示进度条
     inline: true,
     hot: true,
     open: true,
@@ -137,17 +138,20 @@ module.exports = {
   },
   // 插件配置
   plugins: [
+    new CleanWebpackPlugin({
+      cleanAfterEveryBuildPatterns: ['dist'],
+    }),
     new HtmlWebpackPlugin({
-      template: './index.html', //指定模板,有默认模板
+      template: './index.html', // 指定模板,有默认模板
       title: '模板文件',
-      filename: 'index.html', //打包后的名字，默认和模板名一样,
-      hash: true, //引用的脚本名后加哈希
+      filename: 'index.html', // 打包后的名字，默认和模板名一样,
+      hash: true, // 引用的脚本名后加哈希
       inject: 'body', // true|'body'|'head'|false 默认 true即在body前插入js,false 需要手动插入
-      /* 		minify: {
-				removeAttributeQuotes:false, //删除双引号
-				collapseWhitespace: true //生成的html合并空行
+      /* minify: {
+				removeAttributeQuotes:false, // 删除双引号
+				collapseWhitespace: true // 生成的html合并空行
       } */
-      //还有其他一些属性
+      // 还有其他一些属性
     }),
     // new MiniCssExtractPlugin({
     // 	filename: '[name].css',

@@ -437,7 +437,7 @@ options:
 
 ## 使用插件
 
-loader 用于转化模块，而插件则用于执行某个任务，比如打包优化、资源管理、注入环境变量等。使用插件，需要`require`它，然后在`plugins`数组中 new 一个元素，还可以传入相关参数。
+loader 用于转化模块，而插件则用于在某个时刻执行某个任务，比如打包优化、资源管理、注入环境变量等。使用插件，需要`require`它，然后在`plugins`数组中 new 一个元素，还可以传入相关参数。
 
 ### 使用 html 模板生成 html
 
@@ -461,9 +461,9 @@ plugins: [
   new HtmlWebpackPlugin({
     template: './index.html', //指定模板,有默认模板
     title: '模板文件',
-    filename: 'index.html', //打包后的名字，默认和模板名一样,
+    filename: 'index.html', // 打包后的名字，默认和模板名一样,
     hash: true, //引用的脚本名后加哈希
-    inject: 'head', // true|'body'|'head'|false 默认 true即在body前插入js,false 需要手动插入
+    inject: 'head', // true|'body'|'head'|false 默认 true 即在 body 前插入 js,false 需要手动插入
     /*minify: {
 				removeAttributeQuotes:false, //删除双引号
 				collapseWhitespace: true //生成的html合并空行
