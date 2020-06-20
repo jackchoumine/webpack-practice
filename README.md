@@ -3,17 +3,17 @@
 前端构建：将浏览器不能支持的代码（比如用 ES6 语法、使用框架开发）的代码转换为支持的 JS、CSS 和 HTML 代码。主要包括以下内容：
 
 - 模块合并：模块化开发的项目，会合成一个文件，减少请求；
-- 代码转化：将 TypeScript、ES6 、等浏览器不支持的代码，转换层 JS；CSS 扩展语言转为 CSS 等；
+- 代码转化：将 TypeScript、ES6 、等浏览器不支持的代码，转换成 JS；CSS 扩展语言转为 CSS 等；
 - 文件优化：压缩代码，合成图片等；
 - 代码分割：提交公共代码；
-- 自动刷新：监听代码变化，自动刷新；
+- 自动刷新：监听代码变化，自动刷新，提升开发体验；
 - 代码校验：测试代码是否符合规范等。
 
 webpack 是一个模块打包器，webpack 视**任何文件为模块**，通过 Loader 转换文件，Plugin 注入钩子，最后输出合成的文件。
 
 webpack 的优点：
 
-- 零配置（**webpack4 新增特性**），也即是入口和出口文件，默认生产模式；
+- 零配置（**webpack4 新增特性**），也即可在 npm script 中指定入口和出口文件，默认生产模式；
 - 专注前端模块化，开箱即用；
 - 支持 Plugin 扩展，灵活；
 - 不局限于 web 开发；
@@ -28,7 +28,7 @@ webpack 的优点：
 npm i -D webpack webpack-cli
 ```
 
-从 webpack4 开始，命令行工具单独成为一个包，所以需要安装`webpack-cli`。
+> 学习时，webpack 还是 4.3.0 版本。 从 webpack4 开始，命令行工具单独成为一个包，所以需要安装`webpack-cli`。
 
 ## 基本配置
 
@@ -101,20 +101,22 @@ Entrypoint main = main.js
 
 关于 hash:[webpack4 如何优雅缓存打包文件](https://imweb.io/topic/5b6f224a3cb5a02f33c013ba)
 打包后的文件解读：[打包文件解读](http://tech.colla.me/zh/show/learn_webpack_1_how_it_compiles)
+
 用命令打包，易错且不能满足复杂的打包需求，用 **配置文件+脚本命令** 是极好的。
+
 [webpack 命令](https://webpack.docschina.org/api/cli/)，命令的配置会覆盖配置文件的配置。
 
-编写配置文件：webpack.config.js 或者 webpackfile.js
+编写配置文件：webpack.config.js 或者 webpackfile.js，也可以取其他名字。
 
 ```js
 let path = require('path')
 module.exports = {
   mode: 'development', // 开发模式，还可设置为 production none 不同模式，输出文件不同 production 模式内置了项目产出时的基本配置，产出文件更小、不暴露源码和路径；开发模式满足了快速构建和开发体验，代码可读性更好、易于调试，输出包含路径名和 eval-source-map 等。默认 production。none 输出文件中有很多注释，可读性更好
-  entry: './src/app.js', //打包入口文件
+  entry: './src/app.js', // 打包入口文件，是 entry: { main:'' } 的简写
   output: {
     //打包输出配置
-    path: path.resolve(__dirname, 'build'), //打包文件输出路径，要求绝对路径
-    filename: 'bundle.[hash:5].js', //在打包后的文件名后加上哈希前5位
+    path: path.resolve(__dirname, 'build'), // 打包文件输出路径，要求绝对路径
+    filename: 'bundle.[hash:5].js', // 在打包后的文件名后加上哈希前5位
   },
 }
 ```
@@ -163,10 +165,10 @@ webpack 有默认的[模块解析（查找）规则](https://webpack.docschina.o
 ```js
 resolve:{
     alias:{
-        aliasName:'路径',//指定引入模块的路径，这样的配置可让我们引入模块时不必写很长的路径
+        aliasName:'路径',// 指定引入模块的路径，这样的配置可让我们引入模块时不必写很长的路径
         aliasName$:'精确匹配',
     },
-    extensions:['.js','.vue','.json']//指定引入模块的扩展名，设置后引入时不必写扩展名
+    extensions:['.js','.vue','.json']// 指定引入模块的扩展名，设置后引入模块时不必写扩展名
 }
 ```
 
@@ -198,22 +200,22 @@ webpack 自带了一个 express 服务器，可将打包后的文件部署在该
 代理设置
 
 ```js
-		proxy: {
-			'/getDomainCategory': {
-				target: 'http://localhost:3000',
-				// secure: true, //开启https,
-				// changeOrigin: true,//跨域
-				pathReweite: {
-					'^/getDomainCategory': ''
-				},
-				bypass: function(req, res, proxyOptions) {
-					if (req.headers.accept.indexOf('html') !== -1) {
-						console.log('Skipping proxy for browser request.');
-						return '/index.html';
-					}
-				}
+proxy: {
+	'/getDomainCategory': {
+		target: 'http://localhost:3000',
+		// secure: true, // 开启https,
+		// changeOrigin: true,// 跨域
+		pathRewrite: {
+			'^/getDomainCategory': ''
+		},
+		bypass: function(req, res, proxyOptions) {
+			if (req.headers.accept.indexOf('html') !== -1) {
+				console.log('Skipping proxy for browser request.');
+				return '/index.html';
 			}
 		}
+	}
+}
 ```
 
 发送这样一个请求：
@@ -230,17 +232,17 @@ $.get('/getDomainCategory')
 
 请求信息：
 
-![请求信息](<https://raw.githubusercontent.com/JackZhouMine/jack-picture/master/proxy.png>'请求信息')
+![请求信息](https://raw.githubusercontent.com/JackZhouMine/jack-picture/master/proxy.png '请求信息')
 
 **代理是怎么起作用的？**
 
-`http://localhost:3000/getDomainCategory`是可以获取到数据的。
+`http://localhost:3000/getDomainCategory` 是可以获取到数据的。
 
-proxy`'/getDomainCategory'`和`target`的含义是：请求路径匹配`/getDomainCategory`时，就重定向到`target`。重定向到 https，需要开启`secure`。
+proxy `'/getDomainCategory'` 和 `target` 的含义是：请求路径匹配 `/getDomainCategory` 时，就重定向到`target`。重定向到 https，需要开启`secure`。
 
-`pathReweite`的作用是替换路径，把请求路径中的`/getDomainCategory`替换成`''`。
+`pathRewrite` 的作用是替换路径，把请求路径中的 `/getDomainCategory` 替换成 `''`。
 
-`bypass`函数的作用是过滤掉**不是访问页面**的请求：客户端接请求**非文档数据**时，返回首页。
+`bypass` 函数的作用是过滤掉**不是访问页面**的请求：客户端接请求**非文档数据**时，返回首页。
 
 不用过滤函数和重写属性，也行啊，我的页面太简单了吗？
 
@@ -264,20 +266,20 @@ devTool 各个选项的映射情况和构建时间如下：
 | source-map                     | `❤`      | `❤`          | <span style="color:red;">原始源代码代码</span> | <span style="color:green;">生产</span> | `★`      |
 | inline-source-map              | `❤`      | `❤`          | <span style="color:red;">原始源代码代码</span> | 开发                                   | `★`      |
 | hidden-source-map              | `❤`      | `❤`          | <span style="color:red;">原始源代码代码</span> | <span style="color:green;">生产</span> | `★`      |
-| nosources-source-map           | `❤`      | `❤`          | 没有原始源代码代码                             | <span style="color:green;">生产</span> | `★★★★★`  |
+| nosources-source-map           | `❤`      | `❤`          | 没有原始源代码                                 | <span style="color:green;">生产</span> | `★★★★★`  |
 
 选项值的几个组合的含义：
 
-- eval：生成代码，每个模块`eval` 执行，存在 sourceURL，文件大，速度快，生产环境不宜使用；
+- eval：生成代码，每个模块 `eval` 执行，存在 sourceURL，文件大，速度快，生产环境不宜使用；
 - cheap：低开销的，只映射行数，不映射列数（调试时不需要太关心列数），速度较快；
-- source-map： 产生`.map`文件，映射行列，速度慢；
+- source-map： 产生 `.map` 文件，映射行列，速度慢；
 - module：支持 babel 这类预编译工具。
 
 开发阶段选调试难度低的，构建速度也比较快的，从表中看，`cheap-module-eval-source-map` 适合开发环境，而`cheap-module-source-map`适合生产环境。
 
 ## 使用插件
 
-插件关注某个**编译过程**，功能强大。使用插件只需 require 它，然后添加到`plugins` 数组中，new 一个插件对象。
+插件关注某个**编译过程**，功能强大。使用插件只需 require 它，然后添加到 `plugins` 数组中，new 一个插件对象。
 
 html 模板插件的使用，希望根据一个模板文件生成一个 index.html，并将脚本插入到其中，需要配置一个处理 html 的插件。
 
@@ -291,13 +293,13 @@ npm i -D html-webpack-plugin
 // 插件配置
 plugins: [
     new HtmlWebpackPlugin({
-    template: './index.html', //指定模板
-    filename: 'index.html', //打包后的名字，默认和模板名一样,
-    hash: true, //引用的脚本名后加哈希
+    template: './index.html', // 指定模板
+    filename: 'index.html', // 打包后的名字，默认和模板名一样,
+    hash: true, // 引用的脚本名后加哈希
     minify: {
-         removeAttributeQuotes: true, //删除双引号
-        collapseWhitespace: true, //生成的html合并空行
-         }
+         removeAttributeQuotes: true, // 删除双引号
+         collapseWhitespace: true, // 生成的html合并空行
+      }
     })
 ],
 ```
@@ -335,11 +337,11 @@ plugins: [
 
 ## 使用 loader 处理模块
 
-webpack 只能理解**js**和**json**文件，其他类型的文件可使用相应的 loader 处理，这是 webpack 特有的功能（其他类似的工具不具备）。使用 loader，往往需要在`module.rules`数组中配置：
+webpack 只能理解 **js** 和 **json** 文件，其他类型的文件可使用相应的 loader 处理，这是 webpack 特有的功能（其他类似的工具不具备）。使用 loader，往往需要在`module.rules`数组中配置：
 
 - test 字段：标识出需要 loader 处理的文件，通常用**正则表达式**或者**正则数组**表示；
 - include 和 exclude 字段执行包含或者排除的文件，值是**字符串**或者**字符串数组**；
-- use 字段：表示 test 标识的文件，需要哪个 loader 处理，是 loader 对象数组。
+- use 字段：表示 test 标识的文件需要哪个 loader 处理，是 loader 对象数组。
 
 loader 特性：
 
@@ -486,7 +488,7 @@ npm i -D babel-loader babel-core babel-preset-env
 			{
 				test: /\.js$/,
 				exclude: __dirname+'node_modules',
-				include: __dirname+'src', //配置include 和 exclude  否则报 null
+				include: __dirname+'src', // 配置include 和 exclude  否则报 null
 				use: {
 					loader: 'babel-loader',
 					options: {
