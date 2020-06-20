@@ -2,7 +2,7 @@
  * @Description: webpack 配置
  * @Date: 2020-06-18 01:25:40
  * @Author: JackChouMine
- * @LastEditTime: 2020-06-21 03:50:01
+ * @LastEditTime: 2020-06-21 05:01:00
  * @LastEditors: JackChouMine
  */
 let path = require('path')
@@ -87,7 +87,13 @@ module.exports = {
         // use: [MiniCssExtractPlugin.loader, 'css-loader','sass-loader']
         use: [
           'style-loader',
-          'css-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 2, // scss 文件中，使用 import 时，会执行后面两个loader
+              modules: true, // 模块化的 css // TODO 模块css并不起作用
+            },
+          },
           'sass-loader',
           {
             loader: 'postcss-loader', // 样式添加厂商前缀

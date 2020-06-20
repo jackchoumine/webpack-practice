@@ -2,22 +2,22 @@
  * @Description: vue 文件
  * @Date: 2020-06-18 01:25:40
  * @Author: JackChouMine
- * @LastEditTime: 2020-06-21 01:21:08
+ * @LastEditTime: 2020-06-21 04:49:49
  * @LastEditors: JackChouMine
 -->
 <template>
   <div id="app">
     <div class="container">
-      <div v-for="item of items" :key="item.id" class="inner-container">
-        {{ item.name }}
-      </div>
+      <div
+        v-for="item of items"
+        :key="item.id"
+        class="inner-container"
+      >{{ item.name }}</div>
       <button
         type="button btn-primary"
         class="btn btn-primary btn-lg btn-block"
         @click="onClick"
-      >
-        Button
-      </button>
+      >Button</button>
       <font-awesome-icon icon="coffee" />
       <i class="fas fa-camera fa-xs" />
       <i class="fas fa-camera fa-sm" />
@@ -29,7 +29,9 @@
       <i class="fas fa-camera fa-10x" />
     </div>
     <h2>loader 处理图片</h2>
-    <div><img :src="imgSrc" alt="mac图片" /></div>
+    <div>
+      <img :src="imgSrc" alt="mac图片" class="img" />
+    </div>
   </div>
 </template>
 <script>
@@ -40,15 +42,19 @@ export default {
     return {
       imgSrc: mac,
       name: 'World',
-      items: [{ id: 1, name: 'a' }, { id: 2, name: 'b' }, { id: 3, name: 'c' }],
+      items: [
+        { id: 1, name: 'a' },
+        { id: 2, name: 'b' },
+        { id: 3, name: 'c' }
+      ]
     }
   },
   methods: {
     onClick() {
       let nihao = ''
       console.log('Hello world')
-    },
-  },
+    }
+  }
 }
 </script>
 <style scoped lang="scss">
