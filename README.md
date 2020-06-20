@@ -337,15 +337,22 @@ plugins: [
 
 ## 使用 loader 处理模块
 
-webpack 只能理解 **js** 和 **json** 文件，其他类型的文件可使用相应的 loader 处理，这是 webpack 特有的功能（其他类似的工具不具备）。使用 loader，往往需要在`module.rules`数组中配置：
+webpack 只能理解 **js** 和 **json** 文件，其他类型的文件可使用相应的 loader 处理，这是 webpack 特有的功能（其他类似的工具不具备）。Loader 可以理解为是模块和资源的转换器，它本身是一个函数，接受源文件作为参数，返回转换的结果。有了 loader ，就可以引入任何类型的模块或文件，比如 JSX、 LESS 或图片。使用 loader，往往需要在`module.rules`数组中配置：
 
 - test 字段：标识出需要 loader 处理的文件，通常用**正则表达式**或者**正则数组**表示；
 - include 和 exclude 字段执行包含或者排除的文件，值是**字符串**或者**字符串数组**；
 - use 字段：表示 test 标识的文件需要哪个 loader 处理，是 loader 对象数组。
 
+[loader 很多](https://www.webpackjs.com/loaders/)，webpack 常用的 loader 如下：
+
+- 样式：style-loader、css-loader、less-loader、sass-loader 等
+- 图片等文件：raw-loader、file-loader 、url-loader 等
+- 编译：babel-loader、coffee-loader 、ts-loader 等
+- 校验测试：mocha-loader、jshint-loader 、eslint-loader 等
+
 loader 特性：
 
-- 链式处理： 链式的 loader 将按照出现的顺序相反的顺序执行（即从右往左），前一个 loader 的处理结果将作为后一个的输入，可用`enforce`放到最后或者最前；
+- 链式处理： 链式的 loader 执行顺序和出现顺序相反（即从右往左或者从下到上执行），前一个 loader 的处理结果将作为后一个的输入，可用`enforce`放到最后或者最前；
 - 可用`options` 配置 loader，也可单独配置；
 - loader 的名字都是 xxx-loader。
 
@@ -366,8 +373,8 @@ npm i -D css-loader style-loader
 module: {
   rules: [
     // css-loader 处理 @import 这种语法
-    // style-loader 将css插入到head中
-    // loader顺序，模块处理是有顺序的，从右往左使用 loader 处理模块，然后然后将处理结果传递到下一个 loader，处理多种文件，从下到上处理
+    // style-loader 将 css 插入到 head 中
+    // loader 顺序，模块处理是有顺序的，从右往左使用 loader 处理模块，然后然后将处理结果传递到下一个 loader，处理多种文件，从下到上处理
     // 同一种文件被多个loader处理，可将 use 写成数组形式，loader 作为数组元素
     // loader 还可写成对象形式的，这样可给loader传递参数，但是loader参数多的话，我们往往独立配置一下
     {
@@ -410,9 +417,9 @@ import './src/index.css'
 
 loader 配置参数的方式：
 
-- options ：在 use 数组的 loader 对象中，可增加`options`字段配置；
+- options ：在 use 数组的 loader 对象中，可增加`options`字段配置，**推荐方式**；
 - querystring: 在 loader 名字后面添加 querystring，`'css-loader?url` ;
-- 在引入语句中配置：`import 'style-loader!css-loader?url=false!./style/index.css'`
+- 在引入语句中配置：`import 'style-loader!css-loader?url=false!./style/index.css'`,这些 loader 从右到左执行。
 - 还可以在 CLI 中指定：`--module-bind jade-loader --module-bind 'css=style-loader!css-loader'`
 
 options:
