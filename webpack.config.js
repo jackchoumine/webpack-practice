@@ -2,7 +2,7 @@
  * @Description: webpack 配置
  * @Date: 2020-06-18 01:25:40
  * @Author: JackChouMine
- * @LastEditTime: 2020-06-21 06:15:49
+ * @LastEditTime: 2020-06-23 02:39:01
  * @LastEditors: JackChouMine
  */
 let path = require('path')
@@ -89,7 +89,7 @@ module.exports = {
         // use: [MiniCssExtractPlugin.loader, 'style-loader','css-loader']  包含 style-loader 会报 window is not defined
         // use: [MiniCssExtractPlugin.loader, 'css-loader','sass-loader']
         use: [
-          'style-loader',
+          MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
             options: {
@@ -155,10 +155,10 @@ module.exports = {
       } */
       // 还有其他一些属性
     }),
-    // new MiniCssExtractPlugin({
-    // 	filename: '[name].css',
-    // 	chunkFilename: '[id].css'
-    // }),
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+      chunkFilename: '[id].css',
+    }),
     // 开启 hot 就要调用该插件，否则会提示错误
     new webpack.HotModuleReplacementPlugin(),
     new VueLoaderPlugin(),
