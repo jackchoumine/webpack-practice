@@ -2,7 +2,7 @@
  * @Description: webpack 配置
  * @Date: 2020-06-18 01:25:40
  * @Author: JackChouMine
- * @LastEditTime: 2020-06-23 02:39:01
+ * @LastEditTime: 2020-06-23 03:12:12
  * @LastEditors: JackChouMine
  */
 let path = require('path')
@@ -11,6 +11,9 @@ let HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const OptimizeCSS = require('optimize-css-assets-webpack-plugin')
+const MiniJS = require('terser-webpack-plugin')
+
 module.exports = {
   watch: true,
   // mode: 'none', // 开发模式，还可设置为 production none 不同模式，输出文件不同 可选的
@@ -23,7 +26,7 @@ module.exports = {
     // 打包输出配置 非必须 默认是 dist/main.js
     // publicPath: 'https://test.cdn.com', // js 放在cnd上，插入到html中，src 中会加上 cdn
     path: path.resolve(__dirname, 'build'), // 打包输出路径，要求绝对路径
-    filename: '[name]-[hash].js', // 在打包后的文件名后加上哈希前5位
+    filename: '[name]-[hash:8].js', // 在打包后的文件名后加上哈希前5位
   },
   externals: {
     jquery: 'jquery',
@@ -149,18 +152,24 @@ module.exports = {
       filename: 'index.html', // 打包后的名字，默认和模板名一样,
       hash: true, // 引用的脚本名后加哈希
       inject: 'body', // true|'body'|'head'|false 默认 true即在body前插入js,false 需要手动插入
-      /* minify: {
-				removeAttributeQuotes:false, // 删除双引号
-				collapseWhitespace: true // 生成的html合并空行
-      } */
+      minify: {
+        removeAttributeQuotes: true, // 删除双引号
+        collapseWhitespace: true, // 生成的html合并空行
+      },
       // 还有其他一些属性
     }),
     new MiniCssExtractPlugin({
-      filename: '[name].css',
+      filename: '[name].[hash:8].css',
       chunkFilename: '[id].css',
     }),
     // 开启 hot 就要调用该插件，否则会提示错误
     new webpack.HotModuleReplacementPlugin(),
     new VueLoaderPlugin(),
   ],
+  optimization: {
+    minimizer: [
+      new MiniJS({ cache: true, parallel: true, sourceMap: true }),
+      new OptimizeCSS({}),
+    ],
+  },
 }
