@@ -2,7 +2,7 @@
  * @Description: webpack 配置
  * @Date: 2020-06-18 01:25:40
  * @Author: JackChouMine
- * @LastEditTime: 2020-06-26 02:50:36
+ * @LastEditTime: 2020-06-26 03:44:29
  * @LastEditors: JackChouMine
  */
 let path = require('path')
@@ -196,6 +196,7 @@ module.exports = {
       filename: '[name].[hash:8].css',
       chunkFilename: '[id].css',
     }),
+    new webpack.NamedModulesPlugin(), // 打印更新的模块路径，似乎不经常用到
     // 开启 hot 就要调用该插件，否则会提示错误
     new webpack.HotModuleReplacementPlugin(),
     new VueLoaderPlugin(),
