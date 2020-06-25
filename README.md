@@ -356,7 +356,7 @@ loader 特性：
 - 可用`options` 配置 loader，也可单独配置；
 - loader 的名字都是 xxx-loader。
 
-module 中有一个属性，`noParse`,指定**不用解析**的模块，如果明确知道模块中无其他依赖（没有 require、import 语句），可这么做以提高打包效率。**直接打包**到输出文件中。比如在想要在输出文件中包含`jQuery`代码，使用此方法。
+module 中有一个属性，`noParse`，指定**不用解析**的模块，如果明确知道模块中无其他依赖（没有 require、import 语句），可这么做以提高打包效率。**直接打包**到输出文件中。比如在想要在输出文件中包含`jQuery`代码，使用此方法。
 
 和 **externals**的区别，声明为外部依赖，**不解析也不打包**。比如通过`cdn`使用 jQuery，就可以把 jquery 声明为外部依赖。理论上，使用 externals 性能更好。
 

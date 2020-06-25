@@ -2,7 +2,7 @@
  * @Description: webpack 配置
  * @Date: 2020-06-18 01:25:40
  * @Author: JackChouMine
- * @LastEditTime: 2020-06-26 01:12:49
+ * @LastEditTime: 2020-06-26 02:50:36
  * @LastEditors: JackChouMine
  */
 let path = require('path')
@@ -19,8 +19,8 @@ module.exports = {
   mode: 'development',
   // devtool: 'cheap-module-source-map', // 生产环境
   // source-map 原理 https://www.ruanyifeng.com/blog/2013/01/javascript_source_map.html
-  // devtool: 'cheap-module-eval-source-map', // 开发环境
-  devtool: 'none', // 开发环境
+  devtool: 'cheap-module-eval-source-map', // 开发环境
+  // devtool: 'none', // 开发环境
   entry: { main: './src/index.js', sub: './src/sub.js' }, // 打包入口文件  可选的，这里你是单文件入口
   output: {
     // 打包输出配置 非必须 默认是 dist/main.js
@@ -169,6 +169,7 @@ module.exports = {
   },
   // 插件配置
   plugins: [
+    new webpack.IgnorePlugin(/\.\/locale/, /moment/),
     // 当打包时遇到不能识别的 $、jQuery、window.jQuery、window.$webpack 就自动去加载 jquery 模块。
     // new webpack.ProvidePlugin({
     //   $: 'jquery',
