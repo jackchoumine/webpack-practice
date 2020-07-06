@@ -2,7 +2,7 @@
  * @Description: webpack 配置
  * @Date: 2020-06-18 01:25:40
  * @Author: JackChouMine
- * @LastEditTime: 2020-06-26 03:44:29
+ * @LastEditTime: 2020-06-26 23:24:21
  * @LastEditors: JackChouMine
  */
 let path = require('path')
@@ -13,7 +13,8 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const OptimizeCSS = require('optimize-css-assets-webpack-plugin')
 const MiniJS = require('terser-webpack-plugin')
-
+console.log(path.resolve(__dirname, 'src'))
+console.log(path.join(__dirname, 'src'))
 module.exports = {
   // mode: 'none', // 开发模式，还可设置为 production none 不同模式，输出文件不同 可选的
   mode: 'development',
@@ -143,13 +144,14 @@ module.exports = {
       },
       {
         test: /\.js$/,
-        exclude: __dirname + 'node_modules',
-        include: __dirname + 'src',
+        exclude: /node_modules/, // 为何要使用正则？因为有多个层级的 node_modules
+        include: path.resolve(__dirname, 'src'), // 解析成绝对路径
         use: {
           loader: 'babel-loader',
           options: {
             presets: ['env'],
-            cacheDriectory: true,
+            cacheDriectory: true, // 缓存loader 编译结果，为 true，
+            // 默认的缓存路径为 node_modules/.cache/babel-loader，也可以指定一个具体的路径
             plugins: ['transform-runtime'],
           },
         },
