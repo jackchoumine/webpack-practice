@@ -1,4 +1,22 @@
-# loader 使用
+# loader
+
+webpack 只能处理 JS 和 JSON 文件，项目里的其他的文件通过 loader 处理。
+
+> loader 是一个函数，接收一个文件作为参数，返回转换的结果。
+
+## 常见的 loader
+
+| 名称          | 功能                         |
+| :------------ | :--------------------------- |
+| babel-loader  | 转 js 新版本语法为低版本语法 |
+| css-loader    | 处理 css 文件                |
+| less-loader   | 处理 less 语法               |
+| ts-loader     | 转 TS 为 js                  |
+| file-loader   | 对字体、图片进行打包         |
+| raw-loader    | 将文件以字符串形式导入       |
+| thread-loader | 多进程打包 JSH 和 CSS        |
+
+loader 都以`xxx-loader` 命名，使用前需要需要安装。
 
 webpack 的 loader 很多，记录一下常用的 loader 的使用。
 

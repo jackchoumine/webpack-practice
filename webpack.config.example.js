@@ -1,10 +1,11 @@
-const path = require('path');
+/**
+ * @type {import('webpack').Configuration}
+ */
+const path = require('path')
 
 module.exports = {
-	mode: 'production', // "production" | "development" | "none"  // Chosen mode tells webpack to use its built-in optimizations accordingly.
 	entry: './app/entry', // string | object | array  // 默认为 './src'
-	// 这里应用程序开始执行
-	// webpack 开始打包
+	// 这里应用程序开始执行 webpack 从这里解析模块
 	output: {
 		// webpack 如何输出结果的相关选项
 		path: path.resolve(__dirname, 'dist'), // string
@@ -14,9 +15,11 @@ module.exports = {
 		publicPath: '/assets/', // string    // 输出解析文件的目录，url 相对于 HTML 页面
 		library: 'MyLibrary', // string,
 		// 导出库(exported library)的名称
-		libraryTarget: 'umd' // 通用模块定义    // 导出库(exported library)的类型
+		libraryTarget: 'umd', // 通用模块定义    // 导出库(exported library)的类型
 		/* 高级输出配置（点击显示） */
 	},
+	// 指定环境，生产环境下，webpack 会启用内置优化
+	mode: 'production', // "production" | "development" | "none"
 	module: {
 		// 关于模块配置
 		rules: [
@@ -42,8 +45,8 @@ module.exports = {
 				// 为了更清晰，`-loader` 后缀在 webpack 2 中不再是可选的
 				// 查看 webpack 1 升级指南。
 				options: {
-					presets: ['es2015']
-				}
+					presets: ['es2015'],
+				},
 				// loader 的可选项
 			},
 			{
@@ -55,48 +58,52 @@ module.exports = {
 						loader: 'html-loader',
 						options: {
 							/* ... */
-						}
-					}
-				]
+						},
+					},
+				],
 			},
 			{
 				oneOf: [
 					/* rules */
-				]
+				],
 			},
 			// 只使用这些嵌套规则之一
 			{
 				rules: [
 					/* rules */
-				]
+				],
 			},
 			// 使用所有这些嵌套规则（合并可用条件）
 			{
 				resource: {
 					and: [
 						/* 条件 */
-					]
-				}
+					],
+				},
 			},
 			// 仅当所有条件都匹配时才匹配
 			{
 				resource: {
 					or: [
 						/* 条件 */
-					]
-				}
+					],
+				},
 			},
 			{
 				resource: [
 					/* 条件 */
-				]
-			}
+				],
+			},
 			// 任意条件匹配时匹配（默认为数组）
 			// { resource: { not: /* 条件 */ } }
 			// 条件不匹配时匹配
-		]
+		],
 		/* 高级模块配置（点击展示） */
 	},
+	plugins: [
+		// 插件配置
+		// new HtmlWebpackPlugin({template:'../../'})
+	],
 	resolve: {
 		// 解析模块请求的选项
 		// （不适用于对 loader 解析）
@@ -110,10 +117,10 @@ module.exports = {
 			// 起别名："module" -> "new-module" 和 "module/path/file" -> "new-module/path/file"
 			'only-module$': 'new-module',
 			// 起别名 "only-module" -> "new-module"，但不匹配 "only-module/path/file" -> "new-module/path/file"
-			module: path.resolve(__dirname, 'app/third/module.js')
+			module: path.resolve(__dirname, 'app/third/module.js'),
 			// 起别名 "module" -> "./app/third/module.js" 和 "module/file" 会导致错误
 			// 模块别名相对于当前上下文导入
-		}
+		},
 		/* 可供选择的别名语法（点击展示） */
 		/* 高级解析选项（点击展示） */
 	},
@@ -122,8 +129,8 @@ module.exports = {
 		maxEntrypointSize: 400000, // 整数类型（以字节为单位）
 		assetFilter: function(assetFilename) {
 			// 提供资源文件名的断言函数
-			return assetFilename.endsWith('.css') || assetFilename.endsWith('.js');
-		}
+			return assetFilename.endsWith('.css') || assetFilename.endsWith('.js')
+		},
 	},
 	devtool: 'source-map', // enum  // 通过在浏览器调试工具(browser devtools)中添加元信息(meta info)增强调试
 	// 牺牲了构建速度的 `source-map' 是最详细的。
@@ -135,9 +142,9 @@ module.exports = {
 	// 更改 块加载行为(chunk loading behavior) 和 可用模块(available module)
 	externals: ['react', /^@angular\//], // 不要遵循/打包这些模块，而是在运行时从环境中请求他们
 	serve: {
-		//object
+		// object
 		port: 1337,
-		content: './dist'
+		content: './dist',
 		// ...
 	},
 	// 为 webpack-serve 提供选项
@@ -145,19 +152,14 @@ module.exports = {
 	devServer: {
 		proxy: {
 			// proxy URLs to backend development server
-			'/api': 'http://localhost:3000'
+			'/api': 'http://localhost:3000',
 		},
 		contentBase: path.join(__dirname, 'public'), // boolean | string | array, static file location
 		compress: true, // enable gzip compression
 		historyApiFallback: true, // true for index.html upon 404, object for multiple paths
 		hot: true, // hot module replacement. Depends on HotModuleReplacementPlugin
 		https: false, // true for self-signed, object for cert authority
-		noInfo: true // only errors & warns on hot reload
+		noInfo: true, // only errors & warns on hot reload
 		// ...
 	},
-	plugins: [
-		// ...
-	]
-	// 附加插件列表
-	/* 高级配置（点击展示） */
-};
+}
