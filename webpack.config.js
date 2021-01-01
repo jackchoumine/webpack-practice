@@ -2,7 +2,7 @@
  * @Description: webpack 配置
  * @Date: 2020-06-18 01:25:40
  * @Author: JackChouMine
- * @LastEditTime: 2021-01-01 18:59:50 +0800
+ * @LastEditTime: 2021-01-01 22:09:32 +0800
  * @LastEditors: JackChou
  */
 let path = require('path')
@@ -149,10 +149,11 @@ module.exports = {
 				use: {
 					loader: 'babel-loader',
 					options: {
-						presets: ['env'],
+						presets: ['@babel/preset-react', '@babel/preset-env'],
 						cacheDirectory: true, // 缓存loader 编译结果，为 true，
 						// 默认的缓存路径为 node_modules/.cache/babel-loader，也可以指定一个具体的路径
-						plugins: ['transform-runtime'],
+						// plugins: ['transform-runtime'],
+						plugins: ['@babel/proposal-class-properties'],
 					},
 				},
 			},
