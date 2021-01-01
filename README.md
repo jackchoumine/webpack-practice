@@ -1,9 +1,11 @@
 # webpack 学习
 
-前端构建：将浏览器不能支持的代码（比如用 ES6 语法、使用框架开发）的代码转换为支持的 JS、CSS 和 HTML 代码。主要包括以下内容：
+前端构建：将浏览器不能支持的代码（比如用 ES6 语法、使用框架开发）的代码转换为支持的 JS、CSS 和 HTML 代码。
+
+主要包括以下内容：
 
 - 模块合并：模块化开发的项目，会合成一个文件，减少请求；
-- 代码转化：将 TypeScript、ES6 、等浏览器不支持的代码，转换成 JS；CSS 扩展语言转为 CSS 等；
+- 代码转化：将 TypeScript、ES6 等浏览器不支持的代码，转换成 JS；CSS 扩展语言转为 CSS 、添加前缀等；
 - 文件优化：压缩代码，合成图片等；
 - 代码分割：提交公共代码；
 - 自动刷新：监听代码变化，自动刷新，提升开发体验；
@@ -48,9 +50,9 @@ webpack-cli [options] --entry <entry> --output <output>
 
 ```bash
 --config 指定配置文件路径
---mode 编译模式 值为 production development none 默认 prodution
+--mode 编译模式 值为 production development none 默认 production
 --entry 指定入口文件 默认是 ./src/index.js  src目录默认是修改源代码的目录
---output 指定输出文件 -o  ./dist/mian.js  dist是分发目录，打包的文件都存在在此
+--output 指定输出文件 -o  ./dist/main.js  dist是分发目录，打包的文件都存在在此
 --module-bind js=babel-loader 配置 babel
 ```
 
@@ -77,7 +79,7 @@ npx webpack --mode development #  或者 npx webpack-cli --mode development npx 
 或者:
 
 ```bash
-npx wbapack  --mode=development
+npx webpack  --mode=development
 ```
 
 操作结果：
@@ -111,13 +113,13 @@ Entrypoint main = main.js
 ```js
 let path = require('path')
 module.exports = {
-  mode: 'development', // 开发模式，还可设置为 production none 不同模式，输出文件不同 production 模式内置了项目产出时的基本配置，产出文件更小、不暴露源码和路径；开发模式满足了快速构建和开发体验，代码可读性更好、易于调试，输出包含路径名和 eval-source-map 等。默认 production。none 输出文件中有很多注释，可读性更好
-  entry: './src/app.js', // 打包入口文件，是 entry: { main:'' } 的简写
-  output: {
-    //打包输出配置
-    path: path.resolve(__dirname, 'build'), // 打包文件输出路径，要求绝对路径
-    filename: 'bundle.[hash:5].js', // 在打包后的文件名后加上哈希前5位
-  },
+	mode: 'development', // 开发模式，还可设置为 production none 不同模式，输出文件不同 production 模式内置了项目产出时的基本配置，产出文件更小、不暴露源码和路径；开发模式满足了快速构建和开发体验，代码可读性更好、易于调试，输出包含路径名和 eval-source-map 等。默认 production。none 输出文件中有很多注释，可读性更好
+	entry: './src/app.js', // 打包入口文件，是 entry: { main:'' } 的简写
+	output: {
+		//打包输出配置
+		path: path.resolve(__dirname, 'build'), // 打包文件输出路径，要求绝对路径
+		filename: 'bundle.[hash:5].js', // 在打包后的文件名后加上哈希前5位
+	},
 }
 ```
 
@@ -222,12 +224,12 @@ proxy: {
 
 ```js
 $.get('/getDomainCategory')
-  .then((res) => {
-    console.log(res)
-  })
-  .catch((err) => {
-    console.error(err)
-  })
+	.then((res) => {
+		console.log(res)
+	})
+	.catch((err) => {
+		console.error(err)
+	})
 ```
 
 请求信息：
@@ -371,22 +373,22 @@ npm i -D css-loader style-loader
 
 ```js
 module: {
-  rules: [
-    // css-loader 处理 @import 这种语法
-    // style-loader 将 css 插入到 head 中
-    // loader 顺序，模块处理是有顺序的，从右往左使用 loader 处理模块，然后然后将处理结果传递到下一个 loader，处理多种文件，从下到上处理
-    // 同一种文件被多个loader处理，可将 use 写成数组形式，loader 作为数组元素
-    // loader 还可写成对象形式的，这样可给loader传递参数，但是loader参数多的话，我们往往独立配置一下
-    {
-      test: /\.css$/,
-      use: [
-        {
-          loader: 'style-loader',
-        },
-        'css-loader',
-      ],
-    },
-  ]
+	rules: [
+		// css-loader 处理 @import 这种语法
+		// style-loader 将 css 插入到 head 中
+		// loader 顺序，模块处理是有顺序的，从右往左使用 loader 处理模块，然后然后将处理结果传递到下一个 loader，处理多种文件，从下到上处理
+		// 同一种文件被多个loader处理，可将 use 写成数组形式，loader 作为数组元素
+		// loader 还可写成对象形式的，这样可给loader传递参数，但是loader参数多的话，我们往往独立配置一下
+		{
+			test: /\.css$/,
+			use: [
+				{
+					loader: 'style-loader',
+				},
+				'css-loader',
+			],
+		},
+	]
 }
 ```
 
@@ -395,7 +397,7 @@ src 目录下：
 
 ```css
 body {
-  background-color: red;
+	background-color: red;
 }
 /* css 间相互引用 */
 @import url('./index/index.css');
@@ -405,7 +407,7 @@ body {
 
 ```css
 h1 {
-  color: black;
+	color: black;
 }
 ```
 
@@ -458,18 +460,18 @@ npm i html-webpack-plugin
 ```js
 let HtmlWebpackPlugin = require('html-webpack-plugin')
 plugins: [
-  new HtmlWebpackPlugin({
-    template: './index.html', //指定模板,有默认模板
-    title: '模板文件',
-    filename: 'index.html', // 打包后的名字，默认和模板名一样,
-    hash: true, //引用的脚本名后加哈希
-    inject: 'head', // true|'body'|'head'|false 默认 true 即在 body 前插入 js,false 需要手动插入
-    /*minify: {
+	new HtmlWebpackPlugin({
+		template: './index.html', //指定模板,有默认模板
+		title: '模板文件',
+		filename: 'index.html', // 打包后的名字，默认和模板名一样,
+		hash: true, //引用的脚本名后加哈希
+		inject: 'head', // true|'body'|'head'|false 默认 true 即在 body 前插入 js,false 需要手动插入
+		/*minify: {
 				removeAttributeQuotes:false, //删除双引号
 				collapseWhitespace: true //生成的html合并空行
       } */
-    //还有其他一些属性
-  }),
+		//还有其他一些属性
+	}),
 ]
 ```
 
@@ -489,7 +491,7 @@ plugins: [
 npm i -D babel-loader babel-core babel-preset-env
 ```
 
-配置 webackpack
+配置 webpack
 
 ```js
 {
@@ -535,7 +537,7 @@ npm install babel-runtime --save
 ```bash
 options: {
         presets: ['env'],
-        cacheDriectory:true,//会打编译结果缓存在 node_modules/.cache 下
+        cacheDirectory:true,//会打编译结果缓存在 node_modules/.cache 下
         plugins:['transform-runtime']
 		}
 ```
@@ -543,7 +545,7 @@ options: {
 关于 babel 选项：
 presets 告诉 babel 转换的源码使用哪些新语法特性，可是同时使用多个新语法特性。
 推荐使用`env`,该语法特性包含了`es5、es6、es7`。
-`cacheDriectory`缓存编译文件。
+`cacheDirectory`缓存编译文件。
 `transform-runtime`减少代码冗余。
 
 ### 处理 scss
