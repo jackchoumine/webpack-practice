@@ -2,22 +2,22 @@
  * @Description: vue 文件
  * @Date: 2020-06-18 01:25:40
  * @Author: JackChouMine
- * @LastEditTime: 2020-06-21 04:49:49
- * @LastEditors: JackChouMine
+ * @LastEditTime: 2021-01-01 19:03:53 +0800
+ * @LastEditors: JackChou
 -->
 <template>
   <div id="app">
     <div class="container">
-      <div
-        v-for="item of items"
-        :key="item.id"
-        class="inner-container"
-      >{{ item.name }}</div>
+      <div v-for="item of items" :key="item.id" class="inner-container">
+        {{ item.name }}
+      </div>
       <button
         type="button btn-primary"
         class="btn btn-primary btn-lg btn-block"
         @click="onClick"
-      >Button</button>
+      >
+        Button
+      </button>
       <font-awesome-icon icon="coffee" />
       <i class="fas fa-camera fa-xs" />
       <i class="fas fa-camera fa-sm" />
@@ -35,27 +35,27 @@
   </div>
 </template>
 <script>
-import mac from './img/mac.png'
+import mac from "./img/mac.png";
 export default {
-  name: 'Hello',
+  name: "Hello",
   data() {
     return {
       imgSrc: mac,
-      name: 'World',
+      name: "World",
       items: [
-        { id: 1, name: 'a' },
-        { id: 2, name: 'b' },
-        { id: 3, name: 'c' }
-      ]
-    }
+        { id: 1, name: "a" },
+        { id: 2, name: "b" },
+        { id: 3, name: "c" },
+      ],
+    };
   },
   methods: {
     onClick() {
-      let nihao = ''
-      console.log('Hello world')
-    }
-  }
-}
+      let nihao = "";
+      console.log("Hello world");
+    },
+  },
+};
 </script>
 <style scoped lang="scss">
 .container {
