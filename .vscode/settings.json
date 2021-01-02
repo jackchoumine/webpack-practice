@@ -1,19 +1,52 @@
 {
-  "cSpell.words": [
-    "Entrypoint",
-    "Uglifyjs",
-    "buildin",
-    "eval",
-    "fontawesome",
-    "fortawesome",
-    "happypack",
-    "htmllint",
-    "nosources",
-    "outout",
-    "predev",
-    "querystring",
-    "rulesets",
-    "solide",
-    "webpackfile"
-  ]
+	"editor.wordWrap": "wordWrapColumn", // 超长代码一般出现在html中, 我不喜欢html属性换行, 但是又想看到全部, 那就只能设置编辑器视觉上的换行了.
+	"editor.wordWrapColumn": 150, // 同上
+	"cSpell.words": [
+		"Entrypoint",
+		"Uglifyjs",
+		"buildin",
+		"eval",
+		"fontawesome",
+		"fortawesome",
+		"happypack",
+		"htmllint",
+		"nosources",
+		"outout",
+		"predev",
+		"querystring",
+		"rulesets",
+		"solide",
+		"webpackfile",
+		"xxjs"
+	],
+	"eslint.validate": ["javascript", "javascriptreact", "vue"],
+	"vetur.format.defaultFormatter.html": "js-beautify-html",
+	"vetur.format.defaultFormatter.css": "prettier",
+	"vetur.format.defaultFormatter.postcss": "prettier",
+	"vetur.format.defaultFormatter.scss": "prettier",
+	"vetur.format.defaultFormatter.less": "prettier",
+	"vetur.format.defaultFormatter.stylus": "stylus-supremacy",
+	"vetur.format.defaultFormatter.js": "prettier",
+	"vetur.format.defaultFormatter.ts": "prettier",
+	"vetur.format.defaultFormatter.sass": "sass-formatter",
+	"vetur.format.options.tabSize": 2,
+	"vetur.format.options.useTabs": false,
+	"vetur.format.defaultFormatterOptions": {
+		"js-beautify-html": {
+			// js-beautify-html settings here
+		},
+		"prettier": {
+			// Prettier option here
+			"trailingComma": "es5", // 多行时，尽可能打印尾随的逗号
+			"tabWidth": 4, // 会忽略 vetur 的 tabSize 配置
+			"useTabs": false, // 是否利用 tab 替代空格
+			"semi": true, // 句尾是否加；
+			"singleQuote": true, // 使用单引号而不是双引号
+			"arrowParens": "avoid" //allow paren-less arrow functions 箭头函数的参数使用圆括号
+		}
+	},
+	"html.format.enable": false,
+	"json.format.enable": false,
+	"javascript.format.enable": false,
+	"typescript.format.enable": false
 }

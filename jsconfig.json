@@ -1,0 +1,16 @@
+/*
+ * @Description: 项目中有一个 jsconfig.json 文件的话，这个文件的配置可以对你的文件所在目录下的所有 js 代码做出个性化支持。
+ * jsconfig.json 的配置是 tsconfig.json 的子集。
+ * @Date: 2021-01-03 00:56:48 +0800
+ * @Author: JackChou
+ * @LastEditTime: 2021-01-03 00:57:24 +0800
+ * @LastEditors: JackChou
+ */
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@component": ["./src/component"]
+    }
+  }
+}

@@ -2,60 +2,62 @@
  * @Description: vue 文件
  * @Date: 2020-06-18 01:25:40
  * @Author: JackChouMine
- * @LastEditTime: 2021-01-01 19:03:53 +0800
+ * @LastEditTime: 2021-01-03 01:08:56 +0800
  * @LastEditors: JackChou
 -->
 <template>
-  <div id="app">
-    <div class="container">
-      <div v-for="item of items" :key="item.id" class="inner-container">
-        {{ item.name }}
-      </div>
-      <button
-        type="button btn-primary"
-        class="btn btn-primary btn-lg btn-block"
-        @click="onClick"
-      >
-        Button
-      </button>
-      <font-awesome-icon icon="coffee" />
-      <i class="fas fa-camera fa-xs" />
-      <i class="fas fa-camera fa-sm" />
-      <i class="fas fa-camera fa-lg" />
-      <i class="fas fa-camera fa-2x" />
-      <i class="fas fa-camera fa-3x" />
-      <i class="fas fa-camera fa-5x" />
-      <i class="fas fa-camera fa-7x" />
-      <i class="fas fa-camera fa-10x" />
-    </div>
-    <h2>loader 处理图片</h2>
-    <div>
-      <img :src="imgSrc" alt="mac图片" class="img" />
-    </div>
-  </div>
+	<div id="app">
+		<div class="container">
+			<div v-for="item of items" :key="item.id" class="inner-container">
+				{{ item.name }}
+			</div>
+			<button
+							type="button btn-primary"
+							class="btn btn-primary btn-lg btn-block"
+							@click="onClick"
+			>
+				Button
+			</button>
+			<font-awesome-icon icon="coffee" />
+			<i class="fas fa-camera fa-xs" />
+			<i class="fas fa-camera fa-sm" />
+			<i class="fas fa-camera fa-lg" />
+			<i class="fas fa-camera fa-2x" />
+			<i class="fas fa-camera fa-3x" />
+			<i class="fas fa-camera fa-5x" />
+			<i class="fas fa-camera fa-7x" />
+			<i class="fas fa-camera fa-10x" />
+		</div>
+		<h2>loader 处理图片</h2>
+		<div>
+			<img :src="imgSrc" alt="mac图片" class="img" />
+		</div>
+		<HelloWorld />
+	</div>
 </template>
 <script>
-import mac from "./img/mac.png";
+import HelloWorld from './component/HelloWorld.vue'
+import mac from './img/mac.png'
 export default {
-  name: "Hello",
+  name: 'App',
+  components: { HelloWorld },
   data() {
     return {
       imgSrc: mac,
-      name: "World",
+      name: 'World',
       items: [
-        { id: 1, name: "a" },
-        { id: 2, name: "b" },
-        { id: 3, name: "c" },
+        { id: 1, name: 'a' },
+        { id: 2, name: 'b' },
+        { id: 3, name: 'c' },
       ],
-    };
+    }
   },
   methods: {
     onClick() {
-      let nihao = "";
-      console.log("Hello world");
+      console.log('Hello world')
     },
   },
-};
+}
 </script>
 <style scoped lang="scss">
 .container {

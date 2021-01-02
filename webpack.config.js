@@ -2,17 +2,17 @@
  * @Description: webpack 配置
  * @Date: 2020-06-18 01:25:40
  * @Author: JackChouMine
- * @LastEditTime: 2021-01-01 22:09:32 +0800
+ * @LastEditTime: 2021-01-03 00:11:42 +0800
  * @LastEditors: JackChou
  */
-let path = require('path')
+const path = require('path')
 const webpack = require('webpack')
-let HtmlWebpackPlugin = require('html-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const OptimizeCSS = require('optimize-css-assets-webpack-plugin')
-const MiniJS = require('terser-webpack-plugin')
+// const MiniJS = require('terser-webpack-plugin')
 console.log(path.resolve(__dirname, 'src'))
 console.log(path.join(__dirname, 'src'))
 module.exports = {
@@ -31,6 +31,7 @@ module.exports = {
 	},
 	externals: {
 		jquery: 'jQuery',
+		// eslint-disable-next-line no-dupe-keys
 		jquery: '$',
 	},
 	resolve: {
@@ -76,7 +77,7 @@ module.exports = {
 				pathRewrite: {
 					'^/getDomainCategory': '',
 				},
-				bypass: function(req, res, proxyOptions) {
+				bypass: function (req, res, proxyOptions) {
 					if (req.headers.accept && req.headers.accept.indexOf('html') !== -1) {
 						console.log('Skipping proxy for browser request.')
 						return '/index.html'
@@ -116,6 +117,7 @@ module.exports = {
 			},
 			{
 				test: /\.(sass|scss|css)$/,
+				// eslint-disable-next-line max-len
 				// use: [MiniCssExtractPlugin.loader, 'style-loader','css-loader']  包含 style-loader 会报 window is not defined
 				// use: [MiniCssExtractPlugin.loader, 'css-loader','sass-loader']
 				use: [
@@ -150,7 +152,7 @@ module.exports = {
 					loader: 'babel-loader',
 					options: {
 						presets: ['@babel/preset-react', '@babel/preset-env'],
-						cacheDirectory: true, // 缓存loader 编译结果，为 true，
+						cacheDirectory: true, // 缓存 loader 编译结果，为 true，
 						// 默认的缓存路径为 node_modules/.cache/babel-loader，也可以指定一个具体的路径
 						// plugins: ['transform-runtime'],
 						plugins: ['@babel/proposal-class-properties'],
