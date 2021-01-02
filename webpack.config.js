@@ -2,7 +2,7 @@
  * @Description: webpack 配置
  * @Date: 2020-06-18 01:25:40
  * @Author: JackChouMine
- * @LastEditTime: 2021-01-03 00:11:42 +0800
+ * @LastEditTime: 2021-01-03 01:50:43 +0800
  * @LastEditors: JackChou
  */
 const path = require('path')
@@ -77,7 +77,7 @@ module.exports = {
 				pathRewrite: {
 					'^/getDomainCategory': '',
 				},
-				bypass: function (req, res, proxyOptions) {
+				bypass: function(req, res, proxyOptions) {
 					if (req.headers.accept && req.headers.accept.indexOf('html') !== -1) {
 						console.log('Skipping proxy for browser request.')
 						return '/index.html'
@@ -151,11 +151,10 @@ module.exports = {
 				use: {
 					loader: 'babel-loader',
 					options: {
-						presets: ['@babel/preset-react', '@babel/preset-env'],
+						presets: ['env'],
 						cacheDirectory: true, // 缓存 loader 编译结果，为 true，
 						// 默认的缓存路径为 node_modules/.cache/babel-loader，也可以指定一个具体的路径
-						// plugins: ['transform-runtime'],
-						plugins: ['@babel/proposal-class-properties'],
+						plugins: ['transform-vue-jsx'],
 					},
 				},
 			},
