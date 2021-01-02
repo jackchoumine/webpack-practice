@@ -374,7 +374,7 @@ npm i -D css-loader style-loader
 ```js
 module: {
 	rules: [
-		// css-loader 处理 @import 这种语法
+		// css-loader 处理 @import 这种语法v
 		// style-loader 将 css 插入到 head 中
 		// loader 顺序，模块处理是有顺序的，从右往左使用 loader 处理模块，然后然后将处理结果传递到下一个 loader，处理多种文件，从下到上处理
 		// 同一种文件被多个loader处理，可将 use 写成数组形式，loader 作为数组元素
