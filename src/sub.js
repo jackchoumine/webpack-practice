@@ -2,7 +2,7 @@
  * @Description:sub
  * @Date: 2020-06-21 05:46:59
  * @Author: JackChouMine
- * @LastEditTime: 2021-01-01 22:42:50 +0800
+ * @LastEditTime: 2021-01-03 01:13:00 +0800
  * @LastEditors: JackChou
  */
 // import $ from 'jquery' // expose-loader 引入 jquery
@@ -22,6 +22,8 @@ const r = moment()
 	.fromNow()
 console.log(r)
 console.log(element('#app'))
+// eslint-disable-next-line no-undef
 console.log(jQuery('#app'))
+// eslint-disable-next-line no-undef
 console.log($('#app'))
 console.log(window.$('#app'))
