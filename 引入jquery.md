@@ -1,4 +1,4 @@
-# webbpack 引入 jquery
+# webpack 引入 jquery
 
 ## 使用 ProvidePlugin
 
@@ -8,10 +8,10 @@ ProvidePlugin 是 webpack 的一个插件，能自动加载模块，项目里多
 
 ```js
 new webpack.ProvidePlugin({
-  $: 'jquery',
-  jQuery: 'jquery',
-  'window.jQuery': 'jquery',
-  'window.$': 'jquery',
+	$: 'jquery',
+	jQuery: 'jquery',
+	'window.jQuery': 'jquery',
+	'window.$': 'jquery',
 })
 ```
 
