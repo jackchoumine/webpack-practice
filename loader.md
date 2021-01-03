@@ -86,3 +86,33 @@ npm i -D dart-sass sass-loader # node-sass 安装很慢，使用dart-sass代替�
 ## 增加厂商前缀
 
 `autoprefixer` 根据 Can I use 规则，增加样式属性的厂商前缀。
+
+```js
+{
+	loader: 'postcss-loader', // 样式添加厂商前缀
+	options: {
+		ident: 'postcss',
+		plugins: (loader) => [
+			// require('postcss-import')({ root: loader.resourcePath }),
+			// require('postcss-cssnext')(),
+			// eslint-disable-next-line max-len
+			require('autoprefixer')({ overrideBrowserslist: ['last 2 version', '>1%', 'iOS 7'] }),
+			// require('cssnano')(),
+		],
+	},
+},
+```
+
+## px2rem-loader 自动将 px 转为 rem
+
+```js
+{
+  loader:"px2rem-loader",
+  options:{
+    remUnit:75,// 75px=1rem
+    remPrecision:8 // 保留精度
+  }
+}
+```
+
+借助 lib-flexible 库 -- 根据设备宽高，动态设置 html 的 font-size 的值。
