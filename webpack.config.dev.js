@@ -2,7 +2,7 @@
  * @Description: webpack 配置
  * @Date: 2020-06-18 01:25:40
  * @Author: JackChouMine
- * @LastEditTime: 2021-01-04 02:02:24 +0800
+ * @LastEditTime: 2021-01-04 02:20:37 +0800
  * @LastEditors: JackChou
  */
 
@@ -17,7 +17,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const OptimizeCSS = require('optimize-css-assets-webpack-plugin')
-// const MiniJS = require('terser-webpack-plugin')
+const MiniJS = require('terser-webpack-plugin')
 console.log(path.resolve(__dirname, 'src'))
 console.log(path.join(__dirname, 'src'))
 module.exports = {
@@ -32,7 +32,7 @@ module.exports = {
 		// 打包输出配置 非必须 默认是 dist/main.js
 		// publicPath: 'https://test.cdn.com', // js 放在cnd上，插入到html中，src 中会加上 cdn
 		path: path.resolve(__dirname, 'build'), // 打包输出路径，要求绝对路径
-		filename: '[name]-[chunkhash:8].js', // 在打包后的文件名后加上哈希前5位
+		filename: '[name]-[hash:8].js', // 在打包后的文件名后加上哈希前5位
 	},
 	externals: {
 		jquery: 'jQuery',
@@ -216,9 +216,7 @@ module.exports = {
 		new VueLoaderPlugin(),
 	],
 	optimization: {
-		minimizer: [
-			// new MiniJS({ cache: true, parallel: true, sourceMap: true }),
-			new OptimizeCSS({}),
-		],
+		// eslint-disable-next-line max-len
+		minimizer: [new MiniJS({ cache: true, parallel: true, sourceMap: true }), new OptimizeCSS({})],
 	},
 }

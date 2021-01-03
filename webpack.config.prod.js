@@ -2,7 +2,7 @@
  * @Description: webpack 配置
  * @Date: 2020-06-18 01:25:40
  * @Author: JackChouMine
- * @LastEditTime: 2021-01-04 02:12:16 +0800
+ * @LastEditTime: 2021-01-04 02:30:34 +0800
  * @LastEditors: JackChou
  */
 
@@ -17,7 +17,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const OptimizeCSS = require('optimize-css-assets-webpack-plugin')
-// const MiniJS = require('terser-webpack-plugin')
+const MiniJS = require('terser-webpack-plugin')
 console.log(path.resolve(__dirname, 'src'))
 console.log(path.join(__dirname, 'src'))
 module.exports = {
@@ -103,6 +103,16 @@ module.exports = {
 			title: '模板文件',
 			filename: 'index.html', // 打包后的名字，默认和模板名一样,
 			hash: true, // 引用的脚本名后加哈希
+
+			minify: {
+				html5: true,
+				collapseWhitespace: true,
+				preserveLineBreaks: false, // NOTE 开启后，不会压缩
+				minifyCSS: true,
+				minifyJS: true,
+				removeComments: true,
+				removeAttributeQuotes: true,
+			},
 		}),
 		new MiniCssExtractPlugin({
 			filename: '[name].[contenthash:8].css',
@@ -112,9 +122,7 @@ module.exports = {
 		new VueLoaderPlugin(),
 	],
 	optimization: {
-		minimizer: [
-			// new MiniJS({ cache: true, parallel: true, sourceMap: true }),
-			new OptimizeCSS({}),
-		],
+		// eslint-disable-next-line max-len
+		minimizer: [new MiniJS({ cache: true, parallel: true, sourceMap: true }), new OptimizeCSS({})],
 	},
 }
