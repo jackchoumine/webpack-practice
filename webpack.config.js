@@ -2,7 +2,7 @@
  * @Description: webpack 配置
  * @Date: 2020-06-18 01:25:40
  * @Author: JackChouMine
- * @LastEditTime: 2021-01-03 21:10:28 +0800
+ * @LastEditTime: 2021-01-04 01:23:56 +0800
  * @LastEditors: JackChou
  */
 
