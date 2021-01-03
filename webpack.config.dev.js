@@ -2,7 +2,7 @@
  * @Description: webpack 配置
  * @Date: 2020-06-18 01:25:40
  * @Author: JackChouMine
- * @LastEditTime: 2021-01-04 02:34:38 +0800
+ * @LastEditTime: 2021-01-04 02:53:17 +0800
  * @LastEditors: JackChou
  */
 
@@ -141,15 +141,16 @@ module.exports = {
 					'sass-loader',
 					{
 						loader: 'postcss-loader', // 样式添加厂商前缀
-						// options: {
-						// ident: 'postcss',
-						// plugins: (loader) => [
-						// require('postcss-import')({ root: loader.resourcePath }),
-						// require('postcss-cssnext')(),
-						// require('autoprefixer')(),
-						// require('cssnano')(),
-						// ],
-						// },
+						options: {
+							ident: 'postcss',
+							plugins: (loader) => [
+								// require('postcss-import')({ root: loader.resourcePath }),
+								// require('postcss-cssnext')(),
+								// eslint-disable-next-line max-len
+								require('autoprefixer')({ overrideBrowserslist: ['last 2 version', '>1%', 'iOS 7'] }),
+								// require('cssnano')(),
+							],
+						},
 					},
 				],
 			},

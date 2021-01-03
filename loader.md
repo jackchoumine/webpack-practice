@@ -82,3 +82,7 @@ npm i -D dart-sass sass-loader # node-sass 安装很慢，使用dart-sass代替�
 	use: ['style-loader', 'css-loader', 'sass-loader'],
 }
 ```
+
+## 增加厂商前缀
+
+`autoprefixer` 根据 Can I use 规则，增加样式属性的厂商前缀。
