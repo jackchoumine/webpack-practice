@@ -8,9 +8,9 @@
 	"license": "ISC",
 	"scripts": {
 		"lint": "eslint --fix --ext .js,.vue src ",
-		"build": "webpack --mode=production --colors",
+		"build": "webpack --config webpack.config.prod.js --colors",
 		"predev": "npm run lint",
-		"dev": "webpack-dev-server --colors",
+		"dev": "webpack-dev-server --config webpack.config.dev.js --colors",
 		"start": "webpack-dev-server"
 	},
 	"husky": {

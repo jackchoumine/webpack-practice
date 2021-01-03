@@ -2,7 +2,7 @@
  * @Description: webpack 配置
  * @Date: 2020-06-18 01:25:40
  * @Author: JackChouMine
- * @LastEditTime: 2021-01-04 01:23:56 +0800
+ * @LastEditTime: 2021-01-04 02:02:24 +0800
  * @LastEditors: JackChou
  */
 
@@ -32,7 +32,7 @@ module.exports = {
 		// 打包输出配置 非必须 默认是 dist/main.js
 		// publicPath: 'https://test.cdn.com', // js 放在cnd上，插入到html中，src 中会加上 cdn
 		path: path.resolve(__dirname, 'build'), // 打包输出路径，要求绝对路径
-		filename: '[name]-[hash:8].js', // 在打包后的文件名后加上哈希前5位
+		filename: '[name]-[chunkhash:8].js', // 在打包后的文件名后加上哈希前5位
 	},
 	externals: {
 		jquery: 'jQuery',
@@ -111,7 +111,7 @@ module.exports = {
 				use: {
 					loader: 'url-loader',
 					options: {
-						name: '[name].[ext]',
+						name: '[name]_[hash:8].[ext]',
 						outputPath: 'images/',
 						limit: 1024 * 8, // 8kb 以内处理成 base64
 					},
@@ -207,7 +207,7 @@ module.exports = {
 			// 还有其他一些属性
 		}),
 		new MiniCssExtractPlugin({
-			filename: '[name].[hash:8].css',
+			filename: '[name].[contenthash:8].css',
 			chunkFilename: '[id].css',
 		}),
 		new webpack.NamedModulesPlugin(), // 打印更新的模块路径，似乎不经常用到
