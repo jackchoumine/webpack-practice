@@ -2,7 +2,7 @@
  * @Description: vue 文件
  * @Date: 2020-06-18 01:25:40
  * @Author: JackChouMine
- * @LastEditTime: 2021-01-03 16:38:49 +0800
+ * @LastEditTime: 2021-01-03 19:17:09 +0800
  * @LastEditors: JackChou
 -->
 <template>
@@ -30,17 +30,21 @@
 		</div>
 		<h2>loader 处理图片</h2>
 		<div>
-			<img :src="imgSrc" alt="mac图片" class="img" />
+			<img :src="imgSrc" alt="mac图片" class="img"/>
 		</div>
-		<HelloWorld />
+		<TestReload/>
+		<HelloWorld  prop-data="来父组件的数据"/>
+		<Hi/>
 	</div>
 </template>
 <script>
 import HelloWorld from './component/HelloWorld.vue'
+import TestReload from './component/Test.vue'
+import Hi from './component/Hi.js'
 import mac from './img/mac.png'
 export default {
   name: 'App',
-  components: { HelloWorld },
+  components: { HelloWorld,TestReload ,Hi},
   data() {
     return {
       imgSrc: mac,

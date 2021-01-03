@@ -2,8 +2,13 @@
  * @Description: webpack 配置
  * @Date: 2020-06-18 01:25:40
  * @Author: JackChouMine
- * @LastEditTime: 2021-01-03 16:42:00 +0800
+ * @LastEditTime: 2021-01-03 21:10:28 +0800
  * @LastEditors: JackChou
+ */
+
+/**
+ * @types/webpack
+ * @type {import('webpack').Configuration}
  */
 const path = require('path')
 const webpack = require('webpack')
@@ -59,6 +64,7 @@ module.exports = {
 		host: 'localhost',
 		port: 8080,
 		contentBase: './build',
+		// watchContentBase: true,
 		compress: true, // 收使用压缩文件
 		headers: {
 			'X-foo': '112233',
@@ -192,7 +198,8 @@ module.exports = {
 			title: '模板文件',
 			filename: 'index.html', // 打包后的名字，默认和模板名一样,
 			hash: true, // 引用的脚本名后加哈希
-			inject: 'body', // true|'body'|'head'|false 默认 true即在body前插入js,false 需要手动插入
+			// inject: 'body', // true|'body'|'head'|false 默认 true 即在body前插入 js,false 需要手动插入
+			// inject: true,
 			// minify: {
 			//   removeAttributeQuotes: true, // 删除双引号
 			//   collapseWhitespace: true, // 生成的html合并空行
