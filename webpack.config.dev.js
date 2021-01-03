@@ -2,7 +2,7 @@
  * @Description: webpack 配置
  * @Date: 2020-06-18 01:25:40
  * @Author: JackChouMine
- * @LastEditTime: 2021-01-04 02:20:37 +0800
+ * @LastEditTime: 2021-01-04 02:34:38 +0800
  * @LastEditors: JackChou
  */
 
@@ -190,9 +190,7 @@ module.exports = {
 		//   'window.jQuery': 'jquery',
 		//   'window.$': 'jquery',
 		// }),
-		new CleanWebpackPlugin({
-			cleanAfterEveryBuildPatterns: ['dist'],
-		}),
+		new CleanWebpackPlugin(),
 		new HtmlWebpackPlugin({
 			template: './index.html', // 指定模板,有默认模板
 			title: '模板文件',
