@@ -2,7 +2,7 @@
  * @Description: webpack 配置
  * @Date: 2020-06-18 01:25:40
  * @Author: JackChouMine
- * @LastEditTime: 2021-01-03 01:50:43 +0800
+ * @LastEditTime: 2021-01-03 16:42:00 +0800
  * @LastEditors: JackChou
  */
 const path = require('path')
@@ -115,20 +115,23 @@ module.exports = {
 				test: /\.vue$/,
 				use: 'vue-loader',
 			},
+			{ test: /\.css$/, use: ['style-loader', 'css-loader'] },
 			{
-				test: /\.(sass|scss|css)$/,
+				test: /\.(sass|scss)$/,
 				// eslint-disable-next-line max-len
 				// use: [MiniCssExtractPlugin.loader, 'style-loader','css-loader']  包含 style-loader 会报 window is not defined
 				// use: [MiniCssExtractPlugin.loader, 'css-loader','sass-loader']
 				use: [
-					MiniCssExtractPlugin.loader,
-					{
-						loader: 'css-loader',
-						options: {
-							importLoaders: 2, // scss 文件中，使用 import 时，会执行后面两个loader
-							modules: true, // 模块化的 css // TODO 模块css并不起作用
-						},
-					},
+					// MiniCssExtractPlugin.loader,
+					// {
+					// 	loader: 'css-loader',
+					// 	options: {
+					// 		importLoaders: 2, // scss 文件中，使用 import 时，会执行后面两个loader
+					// 		modules: true, // 模块化的 css // TODO 模块css并不起作用
+					// 	},
+					// },
+					'style-loader',
+					'css-loader',
 					'sass-loader',
 					{
 						loader: 'postcss-loader', // 样式添加厂商前缀

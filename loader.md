@@ -3,6 +3,7 @@
 webpack 只能处理 JS 和 JSON 文件，项目里的其他的文件通过 loader 处理。
 
 > loader 是一个函数，接收一个文件作为参数，返回转换的结果。
+> loader 是链式调用的，处理同一文件，后面的 loader 先调用。
 
 ## 常见的 loader
 
@@ -39,7 +40,7 @@ webpack 的 loader 很多，记录一下常用的 loader 的使用。
 ```
 
 `url-loader` 把图片处理成 base64 的格式，直接放入 js，可减少 http 请求，8KB 以内推荐使用，否则会导致 JS 文件很大。
-`npm i ulr-loader`
+`npm i url-loader`
 
 ```js
 {
@@ -50,5 +51,34 @@ webpack 的 loader 很多，记录一下常用的 loader 的使用。
             limit:1024*8// 超过 8kb 不处理成 base64
         }
     }
+}
+```
+
+## 处理 CSS
+
+`css-loader`用于处理.css 文件，将其处理成 commonjs 对象。
+
+`style-loader`将样式通过`<style>`标签插入到 head 中。
+
+安装依赖：`npm i -D css-loader style-loader`
+
+```js
+{ test: /\.css$/, use: ['style-loader', 'css-loader'] },
+```
+
+<!-- TODO 配置选项，可看文档 -->
+
+## 处理 scss
+
+```bash
+npm i -D dart-sass sass-loader # node-sass 安装很慢，使用dart-sass代替。
+```
+
+配置 webpack:
+
+```js
+{
+	test: /\.(sass|scss)$/,
+	use: ['style-loader', 'css-loader', 'sass-loader'],
 }
 ```

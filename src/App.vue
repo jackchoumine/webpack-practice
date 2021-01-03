@@ -2,7 +2,7 @@
  * @Description: vue 文件
  * @Date: 2020-06-18 01:25:40
  * @Author: JackChouMine
- * @LastEditTime: 2021-01-03 01:08:56 +0800
+ * @LastEditTime: 2021-01-03 16:38:49 +0800
  * @LastEditors: JackChou
 -->
 <template>
@@ -63,8 +63,11 @@ export default {
 .container {
   background-color: #e4e3e3;
   .inner-container {
-    background-color: blue;
+    background-color:lightblue;
     margin: 20px;
+  }
+  h2 {
+    color:lightseagreen;
   }
 }
 </style>
