@@ -1,21 +1,15 @@
-<!--
- * @Description: html 模板
- * @Date: 2020-06-18 01:25:40
- * @Author: JackChouMine
- * @LastEditTime: 2020-06-26 01:12:41
- * @LastEditors: JackChouMine
--->
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>模板文件</title>
-  </head>
+	<head>
+		${ require('raw-loader!./meta.html') }
+		<title>模板文件</title>
+	</head>
+	<script>
+		${ require('raw-loader!babel-loader!../node_modules/lib-flexibl/fexible.js') }
+	</script>
 
-  <body>
-    <div id="hello">hello</div>
-    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
-  </body>
+	<body>
+		<div id="hello">hello</div>
+		<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
+	</body>
 </html>
