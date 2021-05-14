@@ -3,6 +3,7 @@
 	"editor.wordWrapColumn": 150, // 同上
 	"cSpell.words": [
     "Entrypoint",
+    "Tapable",
     "Uglifyjs",
     "buildin",
     "cssnext",
