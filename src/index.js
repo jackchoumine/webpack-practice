@@ -22,10 +22,11 @@ library.add(brands)
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 new Vue({
-	el: '#hello',
-	render: (h) => h(App),
-	mounted() {
-		// 再根组件挂载之后，追加一张图片
-		createImg()
-	},
+  el: '#hello',
+  name: 'Root',
+  mounted() {
+    // 再根组件挂载之后，追加一张图片
+    createImg()
+  },
+  render: h => h(App),
 })
