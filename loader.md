@@ -101,9 +101,9 @@ npm i -D react react-dom @babel/preset-react
 
 ## 处理 CSS
 
-`css-loader`用于处理.css 文件，将其处理成 commonjs 对象。
+`css-loader` 用于处理 `.css` 文件，将其处理成 commonjs 对象。
 
-`style-loader`将样式通过`<style>`标签插入到 head 中。
+`style-loader` 将样式通过 `<style>` 标签插入到 head 中。
 
 安装依赖：`npm i -D css-loader style-loader`
 
@@ -127,6 +127,26 @@ npm i -D dart-sass sass-loader # node-sass 安装很慢，使用dart-sass代替�
 	use: ['style-loader', 'css-loader', 'sass-loader'],
 }
 ```
+
+## less
+
+```bash
+npm i -D less less-loader
+```
+
+```js
+{
+  test:/\.less/,
+  use:[
+    'style-loader',
+    'css-loader',
+    'less-loader'
+  ]
+}
+```
+
+遇到报错`Module build failed: TypeError: this.getOptions is not a function`
+less 版本太高，和 webpack 不匹配，降低版本解决。
 
 ## 增加厂商前缀
 
