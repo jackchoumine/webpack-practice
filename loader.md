@@ -15,11 +15,40 @@ webpack 只能处理 JS 和 JSON 文件，项目里的其他的文件通过 load
 | ts-loader     | 转 TS 为 js                  |
 | file-loader   | 对字体、图片进行打包         |
 | raw-loader    | 将文件以字符串形式导入       |
-| thread-loader | 多进程打包 JSH 和 CSS        |
+| thread-loader | 多进程打包 JS 和 CSS         |
 
-loader 都以`xxx-loader` 命名，使用前需要需要安装。
+loader 都以`xxx-loader` 命名，使用前需要安装。
 
 webpack 的 loader 很多，记录一下常用的 loader 的使用。
+
+## 解析 es6
+
+```bash
+npm i -D @babel/core @babel/preset-env babel-loader
+```
+
+`.babelrc`:
+
+```json
+{
+  "presets": ["@babel/preset-env"]
+}
+```
+
+配置 loader:
+
+```js
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        include: resolve(__dirname, 'src'),
+        exclude: resolve(__dirname, 'node_modules'),
+        use: 'babel-loader',
+      },
+    ],
+  },
+```
 
 ## 处理的图片的 loader
 
@@ -137,7 +166,7 @@ npm i -D dart-sass sass-loader # node-sass 安装很慢，使用dart-sass代替�
 
 ```html
 <script>
-	${require('raw-loader!babel-loader!./meta.html)}
+  ${require('raw-loader!babel-loader!./meta.html)}
 </script>
 ```
 
@@ -145,7 +174,7 @@ npm i -D dart-sass sass-loader # node-sass 安装很慢，使用dart-sass代替�
 
 ```html
 <script>
-	${require('raw-loader!babel-loader!../node_modules/lib-flexible')}
+  ${require('raw-loader!babel-loader!../node_modules/lib-flexible')}
 </script>
 ```
 
