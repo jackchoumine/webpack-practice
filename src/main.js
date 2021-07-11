@@ -2,7 +2,7 @@
  * @Description: 入口文件
  * @Date: 2021-07-11 22:03:32 +0800
  * @Author: JackChou
- * @LastEditTime: 2021-07-12 00:21:15 +0800
+ * @LastEditTime: 2021-07-12 00:28:45 +0800
  * @LastEditors: JackChou
  */
 import React from 'react'
@@ -16,7 +16,7 @@ class App extends React.Component {
     return (
       <div className='head'>
         hello,
-        <h1>world!...</h1>
+        <h1>world!</h1>
         <div>
           <input />
         </div>
