@@ -180,6 +180,8 @@ less 版本太高，和 webpack 不匹配，降低版本解决。
 }
 ```
 
+<!-- TODO 报错 -->
+
 借助 lib-flexible 库 -- 根据设备宽高，动态设置 html 的 font-size 的值。
 
 ## raw-loader 实现资源内联
