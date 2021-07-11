@@ -2,11 +2,11 @@
  * @Description: webpack 配置
  * @Date: 2021-07-11 22:00:35 +0800
  * @Author: JackChou
- * @LastEditTime: 2021-07-12 00:00:06 +0800
+ * @LastEditTime: 2021-07-12 00:17:57 +0800
  * @LastEditors: JackChou
  */
 const { resolve } = require('path')
-
+const { HotModuleReplacementPlugin } = require('webpack')
 module.exports = {
   entry: './src/main.js',
   output: {
@@ -36,5 +36,12 @@ module.exports = {
         use: 'file-loader',
       },
     ],
+  },
+  plugins: [new HotModuleReplacementPlugin()],
+  watch: true,
+  devServer: {
+    contentBase: './build',
+    hot: true,
+    open: true,
   },
 }
