@@ -2,7 +2,7 @@
  * @Description: webpack 配置
  * @Date: 2021-07-11 22:00:35 +0800
  * @Author: JackChou
- * @LastEditTime: 2021-07-11 23:46:13 +0800
+ * @LastEditTime: 2021-07-12 00:00:06 +0800
  * @LastEditors: JackChou
  */
 const { resolve } = require('path')
@@ -30,6 +30,10 @@ module.exports = {
       {
         test: /\.less$/,
         use: ['style-loader', 'css-loader', 'less-loader'],
+      },
+      {
+        test: /\.(png|jpg|jpeg)$/,
+        use: 'file-loader',
       },
     ],
   },
