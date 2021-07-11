@@ -2,7 +2,7 @@
  * @Description: webpack 配置
  * @Date: 2021-07-11 22:00:35 +0800
  * @Author: JackChou
- * @LastEditTime: 2021-07-12 02:28:39 +0800
+ * @LastEditTime: 2021-07-12 03:09:46 +0800
  * @LastEditors: JackChou
  */
 const glob = require('glob')
@@ -42,8 +42,8 @@ module.exports = {
     filename: '[name].js',
     path: resolve(__dirname, 'build'),
   },
-  mode: 'development',
-  // mode:'production',
+  // mode: 'none',
+  mode: 'production',
   module: {
     rules: [
       {
