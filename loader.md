@@ -50,6 +50,22 @@ npm i -D @babel/core @babel/preset-env babel-loader
   },
 ```
 
+## react
+
+```bash
+npm i -D react react-dom @babel/preset-react
+```
+
+`.babelrc`:
+
+```json
+{
+  "presets": ["@babel/preset-env", "@babel/preset-react"]
+}
+```
+
+不需要配置其他。
+
 ## 处理的图片的 loader
 
 `file-loader`，复制图片，把图片移动到打包指定目录，并为图片生成唯一的文件名。
