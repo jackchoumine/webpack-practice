@@ -2,7 +2,7 @@
  * @Description: webpack 配置
  * @Date: 2021-07-11 22:00:35 +0800
  * @Author: JackChou
- * @LastEditTime: 2021-07-12 04:33:35 +0800
+ * @LastEditTime: 2021-07-12 23:40:17 +0800
  * @LastEditors: JackChou
  */
 const glob = require('glob')
@@ -78,6 +78,29 @@ module.exports = {
     ],
   },
   plugins: [new HotModuleReplacementPlugin(), ...htmlWebpackPlugins],
+  // optimization: {
+  //   splitChunks: {
+  //     cacheGroups: {
+  //       commons: {
+  //         test: /(react|react-dom)/,
+  //         name: 'vendors',
+  //         chunks: 'all',
+  //       },
+  //     },
+  //   },
+  // },
+  optimization: {
+    splitChunks: {
+      minSize: 0, // 只有有引用，就分离
+      cacheGroups: {
+        commons: {
+          name: 'common', // 分离出来的文件
+          chunks: 'all',
+          minChunks: 3, // 最小引用次数为2 一个函数引用次数>=2，才分离
+        },
+      },
+    },
+  },
   watch: true,
   devServer: {
     contentBase: './build',
