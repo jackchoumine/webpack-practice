@@ -2,7 +2,7 @@
 
 ## 入口
 
-webpack 以哪个文件为起点开始打包、分析构建依赖图。
+webpack 以哪个文件为起点开始打包、构建依赖图。
 
 默认 index.js。
 
@@ -52,9 +52,9 @@ module.exports = {
 }
 ```
 
-## 开发环境
+## 模式
 
-mode 设置成`development`、`production`、`none`，默认 production，webpack 会根据环境开启某些优化。
+mode 设置成`development`、`production`、`none`，webpack 会根据环境开启某些优化。
 
 development `process.env.NODE_ENV` 设置成 development，启用 NamedChunksPlugin NamedModulesPlugin
 
@@ -62,12 +62,15 @@ production 启用 TerserPlugin SideEffectsFlagPlugin 等
 
 none 不启用任何优化项
 
-## loader---处理特定文件（模块）的利器
+命令行：`webpack --mode=production`
+
+[更多关于模式 (mode)](https://www.webpackjs.com/concepts/mode/)
+
+## loader --- 处理特定文件（模块）的利器
 
 webpack 只能处理 JS 和 JSON 文件，项目里的其他的文件通过 loader 处理。
 
-> loader 是一个函数，接收一个文件作为参数，返回转换的结果。
-> loader 是链式调用的，处理同一文件，后面的 loader 先调用。
+> loader 是一个函数，接收一个文件作为参数，返回转换的结果。 loader 是链式调用的，处理同一文件，后面的 loader 先调用。
 
 ```js
 {
