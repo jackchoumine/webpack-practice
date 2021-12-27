@@ -8,9 +8,18 @@
 
 #### 热更新
 
-#### 优化日志输出
+#### 优化日志输出 & 优化错误提示
 
-#### 优化错误提示
+```json
+{
+  "stats": "error-only"
+}
+```
+
+[更多关于日志的设置](https://webpack.docschina.org/configuration/stats/#root)
+
+> [friendly-errors-webpack-plugin](https://www.npmjs.com/package/friendly-errors-webpack-plugin) 不再维护，且在 不支持
+> webpack5，目前还没找到更好的代替方案。
 
 ### 请求代理
 
@@ -47,6 +56,10 @@
 #### 分离公共代码
 
 #### 按需引入模块
+
+[三种方式分割 VueJS 及 Webpack 代码](https://www.jianshu.com/p/1deb7be982f7)
+
+[按需加载](https://blog.csdn.net/qq_27626333/article/details/76228578)
 
 ## 其他高级应用
 
