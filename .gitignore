@@ -36,3 +36,4 @@ benchmarks/graphs
 *.njsproj
 *.sln
 ts.js
+.history
