@@ -66,6 +66,16 @@ none 不启用任何优化项
 
 [更多关于模式 (mode)](https://www.webpackjs.com/concepts/mode/)
 
+通过 `mode` 选项配置环境，不同的环境配置 webpack 采用不同的构建策略。
+
+| 值          | 策略                                                                                                                                                                                                                          |
+| :---------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| development | 设置`process.env.NODE_ENV` 为`development`。开启`NamedChunksPlugin`、`NamedModulesPlugin`                                                                                                                                     |
+| production  | 设置`process.env.NODE_ENV` 为`production`。开启`FlagDependencyUsagePlugin`、`FlagIncludeChunksPlugin`、`ModuleConcatenationPlugin`、`NoEmitOnErrorPlugin`、`OccurrenceOrderPlugin`、`SideEffectsFlagPlugin`、`TerserPlugin`等 |
+| none        | 不开启任何优化                                                                                                                                                                                                                |
+
+> 可设置 mode 为 none，然后手动开启相关优化。
+
 ## loader --- 处理特定文件（模块）的利器
 
 webpack 只能处理 JS 和 JSON 文件，项目里的其他的文件通过 loader 处理。
