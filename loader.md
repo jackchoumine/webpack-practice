@@ -237,3 +237,5 @@ CSS 内联：
 方案二：
 
 使用 html-inline-css-webpack-plugin 插件，把打包后的 CSS 内联到 head。
+
+[loader 使用技巧](https://blog.csdn.net/weixin_37625953/article/details/79988656)
