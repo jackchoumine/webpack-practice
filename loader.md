@@ -2,8 +2,7 @@
 
 webpack 只能处理 JS 和 JSON 文件，项目里的其他的文件通过 loader 处理。
 
-> loader 是一个函数，接收一个文件作为参数，返回转换的结果。
-> loader 是链式调用的，处理同一文件，后面的 loader 先调用。
+> loader 是一个函数，接收一个文件作为参数，返回转换的结果。 loader 是链式调用的，处理同一文件，后面的 loader 先调用。
 
 ## 常见的 loader
 
@@ -68,8 +67,7 @@ npm i -D react react-dom @babel/preset-react
 
 ## 处理的图片的 loader
 
-`file-loader`，复制图片，把图片移动到打包指定目录，并为图片生成唯一的文件名。
-安装 loader：`npm i file-loader -D`
+`file-loader`，复制图片，把图片移动到打包指定目录，并为图片生成唯一的文件名。安装 loader：`npm i file-loader -D`
 
 ```js
 {
@@ -145,8 +143,8 @@ npm i -D less less-loader
 }
 ```
 
-遇到报错`Module build failed: TypeError: this.getOptions is not a function`
-less 版本太高，和 webpack 不匹配，降低版本解决。
+遇到报错`Module build failed: TypeError: this.getOptions is not a function` less 版本太高，和 webpack 不匹配，降低版本解
+决。
 
 ## 增加厂商前缀
 
@@ -218,7 +216,7 @@ less 版本太高，和 webpack 不匹配，降低版本解决。
 
 > 可能存在 ES6 代码，先使用 babel 转换。
 
-> 并没有生效啊。
+> 并没有生效啊？？
 
 <!-- TODO 内联语法没有效果 -->
 
@@ -228,10 +226,10 @@ CSS 内联：
 
 ```js
 {
-  loader:'style-loader',
-  options:{
-    insertAt:'top',// 在 head 插入
-    singleton:true,// 将所有 style 标签合成一个
+  "loader": "style-loader",
+  "options": {
+    "insertAt": "top", // 在 head 插入
+    "singleton": true // 将所有 style 标签合成一个
   }
 }
 ```
