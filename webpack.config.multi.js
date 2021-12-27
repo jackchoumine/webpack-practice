@@ -2,12 +2,13 @@
  * @Description: webpack 配置
  * @Date: 2021-07-11 22:00:35 +0800
  * @Author: JackChou
- * @LastEditTime: 2021-07-12 23:40:17 +0800
+ * @LastEditTime: 2021-07-13 23:07:14 +0800
  * @LastEditors: JackChou
  */
 const glob = require('glob')
 const { resolve, join } = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const FriendlyErrorWebpackPlugin = require('friendly-errors-webpack-plugin')
 const { HotModuleReplacementPlugin } = require('webpack')
 const setMPA = () => {
   const entry = {}
@@ -20,6 +21,7 @@ const setMPA = () => {
   entryFiles.forEach(filePath => {
     const match = filePath.match(/multi\/(.*)\/index.js$/)
     const pageName = match && match[1]
+    console.log(pageName)
     entry[pageName] = filePath
     const options = {
       template: join(__dirname, `./multi/${pageName}/index.html`), // 指定模板,有默认模板
@@ -77,7 +79,7 @@ module.exports = {
       },
     ],
   },
-  plugins: [new HotModuleReplacementPlugin(), ...htmlWebpackPlugins],
+  plugins: [new HotModuleReplacementPlugin(), ...htmlWebpackPlugins, new FriendlyErrorWebpackPlugin()],
   // optimization: {
   //   splitChunks: {
   //     cacheGroups: {
@@ -106,5 +108,8 @@ module.exports = {
     contentBase: './build',
     hot: true,
     open: true,
+    // stats: '',
+    // stats: 'normal',
   },
+  // stats: 'normal',
 }
