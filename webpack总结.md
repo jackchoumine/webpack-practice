@@ -92,6 +92,12 @@ module.exports = {
 
 > rollup 打包更加方便。
 
+### 服务端渲染 --- SSR
+
+P34
+
+### 本地预渲染
+
 ### 编写 loader
 
 ### 编写 plugin
