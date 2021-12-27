@@ -4,6 +4,8 @@
 
 ## 基本配置
 
+[entry 高级用法](https://webpack.docschina.org/guides/entry-advanced/)
+
 ### 开发体验优化
 
 #### 热更新
