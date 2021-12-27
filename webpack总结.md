@@ -59,20 +59,36 @@
 2. 多模块支持：amd umd esm cjs
 
 ```js
-{
+const TerserWebpackPlugin = require('terser-webpack-plugin')
+
+module.exports = {
+  mode: 'none',
   entry: {
-    'large-number': './src/index.js', // 非压缩版本
-    'large-number.min': './src/index.js', // 压缩版
+    'large-number-sum': './src/index.js',
+    'large-number-sum.min': './src/index.js',
   },
-  // 多出口
+  // devtool: 'none',
   output: {
     filename: '[name].js',
-    library: 'libraryGlobalVar', // 库的全局变量
+    library: 'largeNumberSum',
+    libraryTarget: 'umd',
+    //import * as largeNumberSum from 'large-number-sum' //  ESM
+    //const largeNumberSum = require('large-number-sum') // cjs
+    // require(['large-number-sum],function(largeNumberSum){ // amd
+    //  largeNumberSum(a,b)
+    // })
     libraryExport: 'default',
-    libraryTarget: 'umd', // 库的模块
+    clean: true, // 构建之前删除上次构建产物
+  },
+  optimization: {
+    minimize: true,
+    // NOTE 只对 min.js 文件压缩
+    minimizer: [new TerserWebpackPlugin({ include: /\.min\.js$/ })],
   },
 }
 ```
+
+[两大数求和的库](https://github.com/jackchoumine/large-number-sum)
 
 > rollup 打包更加方便。
 
