@@ -76,6 +76,8 @@ none 不启用任何优化项
 
 > 可设置 mode 为 none，然后手动开启相关优化。
 
+`webpack.optimize.ModuleConcatenationPlugin` scope hoisting 优化模块包裹。
+
 ## loader --- 处理特定文件（模块）的利器
 
 webpack 只能处理 JS 和 JSON 文件，项目里的其他的文件通过 loader 处理。
