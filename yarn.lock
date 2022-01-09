@@ -5863,10 +5863,10 @@
   "resolved" "https://registry.npm.taobao.org/kind-of/download/kind-of-6.0.3.tgz"
   "version" "6.0.3"
 
-"large-number-sum@^1.1.0":
-  "integrity" "sha512-DYdRSfO8kI0juvl2YeEbLBSzZIFXG1Y2lfW+nMNnf2w1jB/2fTmuCs3FZ/wzqGzJTv9qs2S+9xq7Q19U7l76kg=="
-  "resolved" "https://registry.npmmirror.com/large-number-sum/download/large-number-sum-1.1.0.tgz"
-  "version" "1.1.0"
+"large-number-sum@^1.4.0-beta.1":
+  "integrity" "sha512-hVx9FswKOobIFJZQn7I2pQeTw5VhDW0QPayecHExGoQK8BsHbsazG4eCObIbaV5g7FB2a9lhc461vboldpK74w=="
+  "resolved" "https://registry.npmmirror.com/large-number-sum/download/large-number-sum-1.4.0-beta.1.tgz"
+  "version" "1.4.0-beta.1"
 
 "last-call-webpack-plugin@^3.0.0":
   "integrity" "sha1-l0LfDhDjz0blwDgcLekNOnotdVU="
@@ -10238,9 +10238,9 @@
   "resolved" "https://registry.npm.taobao.org/vue-template-es2015-compiler/download/vue-template-es2015-compiler-1.9.1.tgz"
   "version" "1.9.1"
 
-"vue@^2.5.17", "vue@^2.6.10", "vue@~2":
-  "integrity" "sha1-9evU+mvShpQD4pqJau1JBEVskSM="
-  "resolved" "https://registry.npm.taobao.org/vue/download/vue-2.6.12.tgz?cache=0&sync_timestamp=1609360160361&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fvue%2Fdownload%2Fvue-2.6.12.tgz"
+"vue@^2.5.17", "vue@^2.6.12", "vue@~2":
+  "integrity" "sha512-uhmLFETqPPNyuLLbsKz6ioJ4q7AZHzD8ZVFNATNyICSZouqP2Sz0rotWQC8UNBF6VGSCs5abnKJoStA6JbCbfg=="
+  "resolved" "https://registry.npmmirror.com/vue/download/vue-2.6.12.tgz"
   "version" "2.6.12"
 
 "watchpack-chokidar2@^2.0.1":
