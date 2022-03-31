@@ -2,7 +2,7 @@
  * @Description: webpack 配置
  * @Date: 2021-07-11 22:00:35 +0800
  * @Author: JackChou
- * @LastEditTime: 2022-03-31 21:54:11 +0800
+ * @LastEditTime: 2022-03-31 21:58:15 +0800
  * @LastEditors : JackChou
  */
 const glob = require('glob')
