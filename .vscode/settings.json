@@ -18,27 +18,13 @@
     "editor.formatOnSave": true,
     "editor.formatOnPaste": true
   },
-  "cSpell.words": [
-    "Entrypoint",
-    "Tapable",
-    "Uglifyjs",
-    "buildin",
-    "cssnext",
-    "drawio",
-    "eval",
-    "fontawesome",
-    "fortawesome",
-    "happypack",
-    "htmllint",
-    "nosources",
-    "outout",
-    "predev",
-    "querystring",
-    "rulesets",
-    "solide",
-    "webpackfile",
-    "xxjs"
-  ],
+  "html.suggest.html5": true,
+  "emmet.includeLanguages": {
+    "njk": "html"
+  },
+  "files.associations": {
+    "*.nunj": "njk"
+  },
   "eslint.validate": ["javascript", "javascriptreact", "vue"],
   "vetur.format.defaultFormatter.html": "js-beautify-html",
   "vetur.format.defaultFormatter.css": "prettier",
@@ -68,5 +54,26 @@
   "html.format.enable": false,
   "json.format.enable": false,
   "javascript.format.enable": false,
-  "typescript.format.enable": false
+  "typescript.format.enable": false,
+  "cSpell.words": [
+    "Entrypoint",
+    "Tapable",
+    "Uglifyjs",
+    "buildin",
+    "cssnext",
+    "drawio",
+    "eval",
+    "fontawesome",
+    "fortawesome",
+    "happypack",
+    "htmllint",
+    "nosources",
+    "outout",
+    "predev",
+    "querystring",
+    "rulesets",
+    "solide",
+    "webpackfile",
+    "xxjs"
+  ]
 }
