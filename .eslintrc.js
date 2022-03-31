@@ -2,8 +2,8 @@
  * @Description: eslint 规则
  * @Date: 2020-06-26 03:12:50 +0800
  * @Author: JackChou
- * @LastEditTime: 2021-01-03 00:01:23 +0800
- * @LastEditors: JackChou
+ * @LastEditTime: 2022-03-31 23:59:56 +0800
+ * @LastEditors : JackChou
  */
 /*
 "eslint": "^7.6.0",
@@ -32,6 +32,7 @@ module.exports = {
   rules: {
     quotes: [2, 'single', { allowTemplateLiterals: true }],
     semi: [2, 'never'],
+    'comma-dangle': [1, 'only-multiline'],
     // 强制在关键字前后使用一致的空格 (前后腰需要)
     'keyword-spacing': 2,
     // 强制一行的最大长度
