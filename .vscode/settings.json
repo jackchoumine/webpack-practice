@@ -7,6 +7,11 @@
     "editor.formatOnSave": true,
     "editor.formatOnPaste": true
   },
+  "[njk]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true
+  },
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true,
@@ -23,8 +28,9 @@
     "njk": "html"
   },
   "files.associations": {
-    "*.nunj": "njk"
+    "*.njk": "html"
   },
+  "vsicons.associations.files": [{ "icon": "nunjucks", "extensions": ["njk"], "format": "svg" }],
   "eslint.validate": ["javascript", "javascriptreact", "vue"],
   "vetur.format.defaultFormatter.html": "js-beautify-html",
   "vetur.format.defaultFormatter.css": "prettier",
