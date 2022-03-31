@@ -2,7 +2,7 @@
  * @Description : nunjucks 模板
  * @Date        : 2022-03-31 22:07:50 +0800
  * @Author      : JackChou
- * @LastEditTime: 2022-04-01 00:07:59 +0800
+ * @LastEditTime: 2022-04-01 00:51:36 +0800
  * @LastEditors : JackChou
  */
 const { resolve } = require('path')
@@ -20,8 +20,8 @@ module.exports = {
   plugins: [
     new HotModuleReplacementPlugin(),
     new HtmlWebpackPlugins({
-      template: './demo.nunj',
-      filename: '../views/index.nunj', // NOTE 路径重要
+      template: './demo.njk',
+      filename: '../views/index.njk', // NOTE 路径重要
       // 压缩
       minify: {
         collapseWhitespace: true,

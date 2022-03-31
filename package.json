@@ -16,7 +16,7 @@
     "dm": "webpack-dev-server --config webpack.config.multi.js --colors",
     "start": "webpack-dev-server",
     "nun": "webpack-dev-server --config webpack.config.nunj.js",
-    "nunb": "webpack --config webpack.config.nunj.js --mode=production"
+    "nunb": "webpack --config webpack.config.njk.js --mode=production"
   },
   "husky": {
     "hooks": {
@@ -73,6 +73,7 @@
     "mini-css-extract-plugin": "0.6.0",
     "node-sass": "^4.14.1",
     "nunjucks": "^3.2.3",
+    "nunjucks-webpack-plugin": "^5.0.0",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
     "postcss-cssnext": "^3.1.0",
     "postcss-loader": "^3.0.0",
