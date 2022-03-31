@@ -9,6 +9,8 @@ ehthumbs.db
 Desktop.ini
 build/
 dist
+server/static
+server/views
 UsersAdministratorAppDataRoamingnpm-cache
 # Linux
 .directory
