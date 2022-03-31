@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>
+      {% block title %}
+        首页
+      {% endblock %}
+      - nunjucks演示
+    </title>
+    {% block header %}{% endblock %}
+  </head>
+  <body>
+    <header style="text-align:center;">
+      <p>Header</p>
+      <hr>
+      <header>
+        {% block main %}{% endblock %}
+        <footer>
+          <hr/>
+          <div style="text-align:center;">
+            Footer - by postbird
+          </div>
+        </footer>
+      </body>
+      {% block footer %}{% endblock %}
+    </html>
