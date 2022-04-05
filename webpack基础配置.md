@@ -46,7 +46,7 @@ webpack-cli [options] --entry <entry> --output <output>
         index.js
 ```
 
-各个文件的内容，[参见这可](https://webpack.docschina.org/guides/getting-started/)
+各个文件的内容，[参考](https://webpack.docschina.org/guides/getting-started/)
 运行打包命令：
 
 ```bash
@@ -129,13 +129,13 @@ webpack 实际执行的是如下命令：
  },
 ```
 
-| 选项      | 说明                                                                                     | 命令行使用方式 | 其他                                                                                                 |
-| --------- | ---------------------------------------------------------------------------------------- | -------------- | ---------------------------------------------------------------------------------------------------- |
-| watch     | 开启文件监听,默认 false                                                                  | --watch        |                                                                                                      |
-| context   | 基础目录，配置解析起点和加载器                                                           |                | 可不设置这个，将解析入口包含在**entry**中                                                            |
-| mode      | 模式：production、development、none                                                      | --mode=none    | 默认生产模式                                                                                         |
-| resolve   | 指定解析路径规则和文件后缀名。使得模块引入变得简单。                                     |                | **建议配置** `resolve: { alias: { components: './src/components' } ，extensions: ['.js', '.vue']; }` |
-| externals | 外部扩展，从输出 bundle 中排除的依赖。值可以是**字符串**、**对象**、**函数**和**正则**。 |                |                                                                                                      |
+| 选项        | 说明                                                       | 命令行使用方式     | 其他                                                                                              |
+| --------- | -------------------------------------------------------- | ----------- | ----------------------------------------------------------------------------------------------- |
+| watch     | 开启文件监听,默认 false                                          | --watch     |                                                                                                 |
+| context   | 基础目录，配置解析起点和加载器                                          |             | 可不设置这个，将解析入口包含在**entry**中                                                                       |
+| mode      | 模式：production、development、none                           | --mode=none | 默认生产模式                                                                                          |
+| resolve   | 指定解析路径规则和文件后缀名。使得模块引入变得简单。                               |             | **建议配置** `resolve: { alias: { components: './src/components' } ，extensions: ['.js', '.vue']; }` |
+| externals | 外部扩展，从输出 bundle 中排除的依赖。值可以是**字符串**、**对象**、**函数**和**正则**。 |             |                                                                                                 |
 
 ## 模块解析规则
 
@@ -158,23 +158,23 @@ resolve:{
 webpack 自带了一个 express 服务器，可将打包后的文件部署在该服务器上，查看效果，同时还可设置代理等。
 常用配置：
 
-| 选项               | 说明                                                                                           | 命令行使用方式         | 其他                                                                                                                   |
-| ------------------ | ---------------------------------------------------------------------------------------------- | ---------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| hot                | 是否启用模块热替换。刷新时不重新加载整个网页，而是用新模块替换旧模块。在命令行使用，会自动加载 | --hot                  | t 通过配置文件设置热替换，需要启用热替换。使用命令行，则会自动启用。`new **webpack**.**HotModuleReplacementPlugin**()` |
-| inline             | 是否启用内联模式。                                                                             | --inline               | iframe 模式：代码修改后自动打包，但是浏览器不自动刷新；inline：内联模式，自动打包并刷新。**推荐使用热替换内联模式**    |
-| progress           | 是否显示打包进度。                                                                             | --progress             |                                                                                                                        |
-| compress           | 是否开启 gzip 压缩。                                                                           |                        |                                                                                                                        |
-| quiet              | 控制台是否输出打包信息，默认 false                                                             | --quiet=false          |                                                                                                                        |
-| contentBase        | 指定服务器的根目录                                                                             | --content-base=./build |                                                                                                                        |
-| host               | 服务器 ip，默认 localhost                                                                      | --host=127.0.0.1       |                                                                                                                        |
-| headers            | 设置响应头                                                                                     |                        |                                                                                                                        |
-| port               | 端口，默认 8080                                                                                | --port=8080            |                                                                                                                        |
-| open               | 打包会是否打开浏览器，默认 false                                                               |                        |                                                                                                                        |
-| historyApiFallback | 404 时，会回到/index                                                                           |                        |                                                                                                                        |
-| **overlay**        | 编译出错时，在浏览器中显示错误提示                                                             |                        | 设置起来，方便调试                                                                                                     |
-| stats              | 编译时控制台输出的提示信息级别。‘errors-only’\|'minimal'\|'normal'\|'verbose'\|'none'          | 默认`normal`           | [更加具体的信息](https://webpack.docschina.org/configuration/stats/#stats)                                             |
-| proxy              | 代理设置                                                                                       |                        |                                                                                                                        |
-|                    |                                                                                                |                        |                                                                                                                        |
+| 选项                 | 说明                                                                    | 命令行使用方式                | 其他                                                                                    |
+| ------------------ | --------------------------------------------------------------------- | ---------------------- | ------------------------------------------------------------------------------------- |
+| hot                | 是否启用模块热替换。刷新时不重新加载整个网页，而是用新模块替换旧模块。在命令行使用，会自动加载                       | --hot                  | t 通过配置文件设置热替换，需要启用热替换。使用命令行，则会自动启用。`new **webpack**.**HotModuleReplacementPlugin**()` |
+| inline             | 是否启用内联模式。                                                             | --inline               | iframe 模式：代码修改后自动打包，但是浏览器不自动刷新；inline：内联模式，自动打包并刷新。**推荐使用热替换内联模式**                    |
+| progress           | 是否显示打包进度。                                                             | --progress             |                                                                                       |
+| compress           | 是否开启 gzip 压缩。                                                         |                        |                                                                                       |
+| quiet              | 控制台是否输出打包信息，默认 false                                                  | --quiet=false          |                                                                                       |
+| contentBase        | 指定服务器的根目录                                                             | --content-base=./build |                                                                                       |
+| host               | 服务器 ip，默认 localhost                                                   | --host=127.0.0.1       |                                                                                       |
+| headers            | 设置响应头                                                                 |                        |                                                                                       |
+| port               | 端口，默认 8080                                                            | --port=8080            |                                                                                       |
+| open               | 打包会是否打开浏览器，默认 false                                                   |                        |                                                                                       |
+| historyApiFallback | 404 时，会回到/index                                                       |                        |                                                                                       |
+| **overlay**        | 编译出错时，在浏览器中显示错误提示                                                     |                        | 设置起来，方便调试                                                                             |
+| stats              | 编译时控制台输出的提示信息级别。‘errors-only’\|'minimal'\|'normal'\|'verbose'\|'none' | 默认`normal`             | [更加具体的信息](https://webpack.docschina.org/configuration/stats/#stats)                   |
+| proxy              | 代理设置                                                                  |                        |                                                                                       |
+|                    |                                                                       |                        |                                                                                       |
 
 代理设置
 
@@ -232,20 +232,20 @@ proxy `'/getDomainCategory'` 和 `target` 的含义是：请求路径匹配 `/ge
 devtool 属性用于配置打包的代码映射到源代码方式，因为打包后的代码和源码有了很多区别，如果不采用合理映射，会使得调试困难和构建时间很长。选择好的映射方式将使得调试更加容易，打包时间也不会那么长。
 devtool 各个选项的映射情况和构建时间如下：
 
-| 值                             | 构建速度 | 重新构建速度 | 代码品质                                       | 适用环境                               | 调试难度 |
-| ------------------------------ | -------- | ------------ | ---------------------------------------------- | -------------------------------------- | -------- |
-| (none)(默认值)                 | `❤❤❤❤❤❤` | `❤❤❤❤❤❤`     | 打包后的代码                                   | <span style="color:green;">生产</span> | `★★★★★`  |
-| eval                           | `❤❤❤❤❤❤` | `❤❤❤❤❤❤`     | 生成后的代码（不能正确显示行数）               | 开发                                   | `★★★★★`  |
-| cheap-eval-source-map          | `❤❤❤`    | `❤❤❤❤❤`      | 转换后的代码（仅限行）                         | 开发                                   | `★★`     |
-| cheap-module-eval-source-map   | `❤❤`     | `❤❤❤`        | 转换后的代码（仅限行）                         | 开发                                   | `★★`     |
-| eval-source-map                | `❤❤❤`    | `❤❤`         | <span style="color:red;">原始源代码代码</span> | <span style="color:green;">生产</span> | `★`      |
-| cheap-module-source-map        | `❤❤`     | `❤❤❤`        | <span style="color:red;">原始源代码代码</span> | <span style="color:green;">生产</span> | `★`      |
-| inline-cheap-source-map        | `❤❤❤`    | `❤❤`         | 转换后的代码（仅限行）                         | 开发                                   | `★★`     |
-| inline-cheap-module-source-map | `❤❤❤`    | `❤❤`         | 原始源代码（仅限行）                           | 开发                                   | `★`      |
-| source-map                     | `❤`      | `❤`          | <span style="color:red;">原始源代码代码</span> | <span style="color:green;">生产</span> | `★`      |
-| inline-source-map              | `❤`      | `❤`          | <span style="color:red;">原始源代码代码</span> | 开发                                   | `★`      |
-| hidden-source-map              | `❤`      | `❤`          | <span style="color:red;">原始源代码代码</span> | <span style="color:green;">生产</span> | `★`      |
-| nosources-source-map           | `❤`      | `❤`          | 没有原始源代码                                 | <span style="color:green;">生产</span> | `★★★★★`  |
+| 值                              | 构建速度     | 重新构建速度   | 代码品质                                    | 适用环境                                 | 调试难度    |
+| ------------------------------ | -------- | -------- | --------------------------------------- | ------------------------------------ | ------- |
+| (none)(默认值)                    | `❤❤❤❤❤❤` | `❤❤❤❤❤❤` | 打包后的代码                                  | <span style="color:green;">生产</span> | `★★★★★` |
+| eval                           | `❤❤❤❤❤❤` | `❤❤❤❤❤❤` | 生成后的代码（不能正确显示行数）                        | 开发                                   | `★★★★★` |
+| cheap-eval-source-map          | `❤❤❤`    | `❤❤❤❤❤`  | 转换后的代码（仅限行）                             | 开发                                   | `★★`    |
+| cheap-module-eval-source-map   | `❤❤`     | `❤❤❤`    | 转换后的代码（仅限行）                             | 开发                                   | `★★`    |
+| eval-source-map                | `❤❤❤`    | `❤❤`     | <span style="color:red;">原始源代码代码</span> | <span style="color:green;">生产</span> | `★`     |
+| cheap-module-source-map        | `❤❤`     | `❤❤❤`    | <span style="color:red;">原始源代码代码</span> | <span style="color:green;">生产</span> | `★`     |
+| inline-cheap-source-map        | `❤❤❤`    | `❤❤`     | 转换后的代码（仅限行）                             | 开发                                   | `★★`    |
+| inline-cheap-module-source-map | `❤❤❤`    | `❤❤`     | 原始源代码（仅限行）                              | 开发                                   | `★`     |
+| source-map                     | `❤`      | `❤`      | <span style="color:red;">原始源代码代码</span> | <span style="color:green;">生产</span> | `★`     |
+| inline-source-map              | `❤`      | `❤`      | <span style="color:red;">原始源代码代码</span> | 开发                                   | `★`     |
+| hidden-source-map              | `❤`      | `❤`      | <span style="color:red;">原始源代码代码</span> | <span style="color:green;">生产</span> | `★`     |
+| nosources-source-map           | `❤`      | `❤`      | 没有原始源代码                                 | <span style="color:green;">生产</span> | `★★★★★` |
 
 选项值的几个组合的含义：
 

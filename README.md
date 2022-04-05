@@ -40,13 +40,10 @@ webpack 的优点：
 
 缺点：配置项多，配置起来繁琐。
 
-## webpack 核心概念
 
-### 入口
+## 入口
 
 webpack 以哪个文件为起点开始打包、构建依赖图。
-
-默认 index.js。
 
 单入口：一个字符串：
 
@@ -66,7 +63,7 @@ module.exports = {
 
 还可以配置**数组**形式的入口，用得少。
 
-### 出口
+## 出口
 
 指定打包后的输出位置。
 
@@ -94,13 +91,13 @@ module.exports = {
 }
 ```
 
-### 模式
+## 模式
 
 mode 设置成`development`、`production`、`none`，webpack 会根据环境开启某些优化。
 
-development `process.env.NODE_ENV` 设置成 development，启用 NamedChunksPlugin NamedModulesPlugin
+development `process.env.NODE_ENV` 设置成 development，启用 NamedChunksPlugin NamedModulesPlugin。
 
-production 启用 TerserPlugin SideEffectsFlagPlugin 等
+production 启用 TerserPlugin SideEffectsFlagPlugin 等。
 
 none 不启用任何优化项
 
@@ -110,17 +107,17 @@ none 不启用任何优化项
 
 通过 `mode` 选项配置环境，不同的环境配置 webpack 采用不同的构建策略。
 
-| 值          | 策略                                                                                                                                                                                                                                                            |
-| :---------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| development | 设置`process.env.NODE_ENV` 为`development`。开启`NamedChunksPlugin`、`NamedModulesPlugin`                                                                                                                                                                       |
+| 值           | 策略                                                                                                                                                                                                                                         |
+|:----------- |:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| development | 设置`process.env.NODE_ENV` 为`development`。开启`NamedChunksPlugin`、`NamedModulesPlugin`                                                                                                                                                         |
 | production  | 设置`process.env.NODE_ENV` 为`production`。开启`FlagDependencyUsagePlugin`、`FlagIncludeChunksPlugin`、`ModuleConcatenationPlugin (scope hoisting,优化模块引入方式)`、`NoEmitOnErrorPlugin`、`OccurrenceOrderPlugin`、`SideEffectsFlagPlugin`、`TerserPlugin`等 |
-| none        | 不开启任何优化                                                                                                                                                                                                                                                  |
+| none        | 不开启任何优化                                                                                                                                                                                                                                    |
 
 > 可设置 mode 为 none，然后手动开启相关优化，实际开发中不建议这么干。
 
 `webpack.optimize.ModuleConcatenationPlugin` scope hoisting 优化模块包裹。
 
-### loader --- 处理特定文件（模块）的利器
+## loader --- 处理特定文件（模块）的利器
 
 webpack 只能处理 JS 和 JSON 文件，项目里的其他的文件通过 loader 处理。
 
@@ -131,7 +128,7 @@ webpack 只能处理 JS 和 JSON 文件，项目里的其他的文件通过 load
   module: {
     rules: [
       {
-        test: '/.txt$/', // 指定处理的文件
+        test: /\.txt$/, // 指定处理的文件,一个正则匹配文件扩展名
         use: 'raw-loader', // 使用的loader
         options: {}, // loader 配置
         include: resolve(__dirname, 'src'), // 一个绝对路径或者绝对路径的数组，制定需要处理的范围
@@ -142,7 +139,7 @@ webpack 只能处理 JS 和 JSON 文件，项目里的其他的文件通过 load
 }
 ```
 
-### 插件
+## 插件
 
 优化 bundle、资源管理、环境变量注入等。
 
@@ -154,7 +151,7 @@ webpack 只能处理 JS 和 JSON 文件，项目里的其他的文件通过 load
 }
 ```
 
-### webpack 零配置
+## webpack 零配置
 
 webpack 功能非常强大，但是缺点是配置项非常多，从 webpack 4 开始，支持零配置，开箱即用。
 
