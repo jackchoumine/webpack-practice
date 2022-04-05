@@ -1,5 +1,17 @@
 # webpack 核心概念
 
+webpack 是一个`模块打包器`，即将前端项目里的 js 文件、样式文件和图片等资源作为模块，经过 webpack 处理后，输出生产线上部署的代码。
+
+![](https://tva1.sinaimg.cn/large/e6c9d24egy1h0yy0tonz9j21x60t8ad9.jpg)
+
+使用它的好处：
+
+1. 实现项目模块化：把 css 图片等当成模块，方便管理等；
+2. 优化压缩代码：让代码体积更小；
+3. 转化语法：将浏览器不支持的 JS 语法，sass 等语法转成浏览器支持的语法等。
+
+其他...
+
 ## 入口
 
 webpack 以哪个文件为起点开始打包、构建依赖图。
@@ -22,7 +34,7 @@ module.exports = {
 }
 ```
 
-数组
+还可以配置**数组**形式的入口，用得少。
 
 ## 出口
 
@@ -82,7 +94,7 @@ none 不启用任何优化项
 
 webpack 只能处理 JS 和 JSON 文件，项目里的其他的文件通过 loader 处理。
 
-> loader 是一个函数，接收一个文件作为参数，返回转换的结果。 loader 是链式调用的，处理同一文件，后面的 loader 先调用。
+> loader 是一个函数，接收一个文件作为参数，返回转换的结果。 **loader 是链式调用的，处理同一文件，后面的 loader 先调用。**
 
 ```js
 {
@@ -111,3 +123,34 @@ webpack 只能处理 JS 和 JSON 文件，项目里的其他的文件通过 load
   plugins: [new webpackPlugin()]
 }
 ```
+
+## webpack 零配置
+
+webpack 功能非常强大，但是缺点是配置项非常多，从 webpack 4 开始，支持零配置，开箱即用。
+
+`不需要编写 webpack.config.js`，其默认入口为何出口如下。
+
+```js
+module.exports = {
+  entry: './src/index.js',
+  output: './dist/main.js',
+}
+```
+
+零配置只能处理简单的项目，复杂项目还是需要手动配置。
+
+一份比较完整的 `webpack.config.js` 可能包含这些选项：
+
+```js
+module.exports = {
+  entry:'',
+  output:{},
+  mode:'',
+  devtool:'',//开发工具配置
+  module:{rules:[]},// loader 配置
+  plugins:[]// 插件配置
+  devServer:{},// 开发服务器配置
+}
+```
+
+其他配置的用法后续逐渐介绍。
