@@ -2,19 +2,19 @@
  * @Description: 模板
  * @Date: 2021-05-14 19:13:50 +0800
  * @Author: JackChou
- * @LastEditTime: 2022-03-31 21:56:12 +0800
+ * @LastEditTime: 2022-04-05 19:18:58 +0800
  * @LastEditors : JackChou
 -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    ${require('raw-loader!./meta.html')}
+    <!-- 引入一个公共部分的meta头部 -->
+    <%=require('!raw-loader!./meta.html')%>
     <title>模板文件</title>
+    <script>
+      <%=require('!raw-loader!babel-loader!./node_modules/lib-flexible/flexible.js') %>
+    </script>
   </head>
-  <script>
-    ${require('raw-loader!babel-loader!./node_modules/lib-flexibl/fexible.js')}
-  </script>
-
   <body>
     <div id="hello">hello</div>
     <!-- <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.0/jquery.min.js"></script> -->
