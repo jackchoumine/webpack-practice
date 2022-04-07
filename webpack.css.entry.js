@@ -2,12 +2,13 @@
  * @Description : css 入口
  * @Date        : 2022-04-07 20:43:59 +0800
  * @Author      : JackChou
- * @LastEditTime: 2022-04-07 21:24:54 +0800
+ * @LastEditTime: 2022-04-07 22:16:14 +0800
  * @LastEditors : JackChou
  */
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const RemoveCommentPlugin = require('./plugins/remove-comment-plugin')
 module.exports = (env, options) => {
   return {
     entry: './src/empty.js',
@@ -28,6 +29,11 @@ module.exports = (env, options) => {
         { test: /\.txt$/, use: './loaders/txt-loader' },
       ],
     },
-    plugins: [new MiniCssExtractPlugin(), new CleanWebpackPlugin()],
+    plugins: [
+      new HtmlWebpackPlugin({ template: './test.html' }),
+      new MiniCssExtractPlugin(),
+      new CleanWebpackPlugin(),
+      new RemoveCommentPlugin({ name: 'jack' }),
+    ],
   }
 }
