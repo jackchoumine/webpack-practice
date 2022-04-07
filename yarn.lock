@@ -4881,9 +4881,9 @@
   "resolved" "https://registry.npm.taobao.org/html-entities/download/html-entities-1.4.0.tgz?cache=0&sync_timestamp=1609232359852&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fhtml-entities%2Fdownload%2Fhtml-entities-1.4.0.tgz"
   "version" "1.4.0"
 
-"html-loader@0.5.5":
-  "integrity" "sha1-Y1bb6wxJdW2OvVyjJ/Fv8Gq1+uo="
-  "resolved" "https://registry.npm.taobao.org/html-loader/download/html-loader-0.5.5.tgz"
+"html-loader@^0.5.5":
+  "integrity" "sha512-7hIW7YinOYUpo//kSYcPB6dCKoceKLmOwjEMmhIobHuWGDVl0Nwe4l68mdG/Ru0wcUxQjVMEoZpkalZ/SE7zog=="
+  "resolved" "https://registry.npmmirror.com/html-loader/-/html-loader-0.5.5.tgz"
   "version" "0.5.5"
   dependencies:
     "es6-templates" "^0.2.3"
