@@ -40,7 +40,6 @@ webpack 的优点：
 
 缺点：配置项多，配置起来繁琐。
 
-
 ## 入口
 
 webpack 以哪个文件为起点开始打包、构建依赖图。
@@ -107,11 +106,11 @@ none 不启用任何优化项
 
 通过 `mode` 选项配置环境，不同的环境配置 webpack 采用不同的构建策略。
 
-| 值           | 策略                                                                                                                                                                                                                                         |
-|:----------- |:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| development | 设置`process.env.NODE_ENV` 为`development`。开启`NamedChunksPlugin`、`NamedModulesPlugin`                                                                                                                                                         |
+| 值          | 策略                                                                                                                                                                                                                                                            |
+| :---------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| development | 设置`process.env.NODE_ENV` 为`development`。开启`NamedChunksPlugin`、`NamedModulesPlugin`                                                                                                                                                                       |
 | production  | 设置`process.env.NODE_ENV` 为`production`。开启`FlagDependencyUsagePlugin`、`FlagIncludeChunksPlugin`、`ModuleConcatenationPlugin (scope hoisting,优化模块引入方式)`、`NoEmitOnErrorPlugin`、`OccurrenceOrderPlugin`、`SideEffectsFlagPlugin`、`TerserPlugin`等 |
-| none        | 不开启任何优化                                                                                                                                                                                                                                    |
+| none        | 不开启任何优化                                                                                                                                                                                                                                                  |
 
 > 可设置 mode 为 none，然后手动开启相关优化，实际开发中不建议这么干。
 
@@ -138,6 +137,10 @@ webpack 只能处理 JS 和 JSON 文件，项目里的其他的文件通过 load
   }
 }
 ```
+
+常用 loader
+
+![](https://tva1.sinaimg.cn/large/e6c9d24egy1h11h3dgiypj21jl0u0thn.jpg)
 
 ## 插件
 
