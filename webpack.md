@@ -269,6 +269,39 @@ export { default as exportName, hello as myHello } from './demo2.js'
 // myHello()//NOTE 不能调用
 ```
 
+> 不希望导出具体的变量，而是执行
+
+```js
+import './xxx.js'
+```
+
+> 把所有导出变量收集到一个对象中
+
+```js
+import * as moduleA './xxx.js'
+```
+
+> 动态导入
+
+`demo4.js`:
+
+```js
+export const good = 'dynamic import'
+console.log('demo4')
+```
+
+`demo2.js`
+
+```js
+function hello() {
+  console.log(age)
+  import('./demo4.js').then(res => {
+    console.log(res)
+    console.log(res.good)
+  })
+}
+```
+
 4. 请求模块，需要 CORS 支持
 
 ```html
