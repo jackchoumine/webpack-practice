@@ -2,7 +2,7 @@
  * @Description: webpack 配置
  * @Date: 2021-07-11 22:00:35 +0800
  * @Author: JackChou
- * @LastEditTime: 2022-05-30 02:42:45 +0800
+ * @LastEditTime: 2022-05-30 03:08:48 +0800
  * @LastEditors : JackChou
  */
 const glob = require('glob')
@@ -107,6 +107,16 @@ module.exports = {
         },
       },
     },
+    // usedExports: true, // 只使用导出
+    // minimize: true,// 删除不使用的代码
+    // concatenateModules: true, // scope hosting
+    // NOTE babel-loader 使得 tree-shaking 失效？
+    // 最新的版本 babel 修复了这个 bug
+    // 声明代码没副作用
+    // 在package.json 中声明代码没有副作用
+    // sideEffects:[''] // 指定具有副作用的代码
+    // sideEffects
+    sideEffects: true,
   },
   watch: true,
   devServer: {
