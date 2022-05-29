@@ -2,7 +2,7 @@
  * @Description: webpack 配置
  * @Date: 2021-07-11 22:00:35 +0800
  * @Author: JackChou
- * @LastEditTime: 2022-03-31 21:58:15 +0800
+ * @LastEditTime: 2022-05-30 02:42:45 +0800
  * @LastEditors : JackChou
  */
 const glob = require('glob')
@@ -28,21 +28,22 @@ const setMPA = () => {
       title: pageName,
       filename: `${pageName}.html`,
       chunks: [pageName],
-      inject: true
+      inject: true,
     }
     htmlWebpackPlugins.push(new HtmlWebpackPlugin(options))
   })
   return {
     entry,
-    htmlWebpackPlugins
+    htmlWebpackPlugins,
   }
 }
 const { entry, htmlWebpackPlugins } = setMPA()
+
 module.exports = {
   entry,
   output: {
     filename: '[name].js',
-    path: resolve(__dirname, 'build')
+    path: resolve(__dirname, 'build'),
   },
   mode: 'development',
   // mode: 'production',
@@ -52,11 +53,11 @@ module.exports = {
         test: /\.js$/,
         include: resolve(__dirname, 'multi'),
         exclude: resolve(__dirname, 'node_modules'),
-        use: 'babel-loader'
+        use: 'babel-loader',
       },
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader']
+        use: ['style-loader', 'css-loader'],
       },
       {
         test: /\.less$/,
@@ -68,21 +69,21 @@ module.exports = {
             loader: 'px2rem-loader',
             options: {
               remUnit: 75, // 75px=1rem
-              remPrecision: 8 // 保留精度
-            }
-          }
-        ]
+              remPrecision: 8, // 保留精度
+            },
+          },
+        ],
       },
       {
         test: /\.(png|jpg|jpeg)$/,
-        use: 'file-loader'
-      }
-    ]
+        use: 'file-loader',
+      },
+    ],
   },
   plugins: [
     new HotModuleReplacementPlugin(),
     ...htmlWebpackPlugins,
-    new FriendlyErrorWebpackPlugin()
+    new FriendlyErrorWebpackPlugin(),
   ],
   // optimization: {
   //   splitChunks: {
@@ -102,18 +103,19 @@ module.exports = {
         commons: {
           name: 'common', // 分离出来的文件
           chunks: 'all',
-          minChunks: 3 // 最小引用次数为2 一个函数引用次数>=2，才分离
-        }
-      }
-    }
+          minChunks: 3, // 最小引用次数为2 一个函数引用次数>=2，才分离
+        },
+      },
+    },
   },
   watch: true,
   devServer: {
     contentBase: './build',
-    hot: true,
-    open: true
+    hot: true, // 自动刷新，会清除浏览器报错信息
+    // hotOnly: true, // 资源 HMR 失败才回退到 自动刷新
+    open: true,
     // stats: '',
     // stats: 'normal',
-  }
+  },
   // stats: 'normal',
 }

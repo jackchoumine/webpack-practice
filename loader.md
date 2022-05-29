@@ -1,8 +1,8 @@
 # loader
 
-webpack 只能处理 JS 和 JSON 文件，项目里的其他的文件通过 loader 处理。
+webpack 只能处理 JS 和 JSON ，其他的文件通过 loader 处理。
 
-> loader 是一个函数，接收一个文件作为参数，返回转换的结果。 loader 是链式调用的，处理同一文件，后面的 loader 先调用。
+> loader 是一个函数，接收一个文件作为参数，返回转换的结果。 loader 是链式调用的，**处理同一文件，后面的 loader 先调用**。
 
 ## 常见的 loader
 
@@ -15,10 +15,13 @@ webpack 只能处理 JS 和 JSON 文件，项目里的其他的文件通过 load
 | file-loader   | 对字体、图片进行打包         |
 | raw-loader    | 将文件以字符串形式导入       |
 | thread-loader | 多进程打包 JS 和 CSS         |
+| html-loader   | 处理 html                    |
 
 loader 都以`xxx-loader` 命名，使用前需要安装。
 
 webpack 的 loader 很多，记录一下常用的 loader 的使用。
+
+可将 loader 分 3 类：`编译型`、`文件操作型`和`代码检查`
 
 ## 解析 es6
 

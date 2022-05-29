@@ -555,15 +555,15 @@ sass-loader 将 scss 转为 css,css-loader 处理 css 模块，style-loader 将 
 // TODO:编辑器会提示错误，很奇怪。
 打包结果：
 
-```css
+```html
 <style type="text/css">
-.container[data-v-7ba5bd90] {
-  background-color: red;
-}
-.container .inner-container[data-v-7ba5bd90] {
+  .container[data-v-7ba5bd90] {
+    background-color: red;
+  }
+  .container .inner-container[data-v-7ba5bd90] {
     background-color: blue;
     margin: 20px;
-}
+  }
 </style>
 ```
 

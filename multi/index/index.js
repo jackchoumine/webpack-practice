@@ -2,8 +2,8 @@
  * @Description:
  * @Date: 2021-07-12 01:55:54 +0800
  * @Author: JackChou
- * @LastEditTime: 2021-07-13 16:01:24 +0800
- * @LastEditors: JackChou
+ * @LastEditTime: 2022-05-30 02:39:05 +0800
+ * @LastEditors : JackChou
  */
 import React from 'react'
 import ReactDOM from 'react-dom'
@@ -12,6 +12,7 @@ import { common } from '../common'
 common()
 class App extends React.Component {
   state = { Text: null }
+  style = { width: '100px', height: '100px', backgroundColor: '#ccc' }
   loadComponent = () => {
     // TODO 魔术注释
     import(/* webpackChunkName: "Text-Component" */ './Text').then(Text => {
@@ -22,7 +23,8 @@ class App extends React.Component {
     const { Text } = this.state
     return (
       <div>
-        <h1>world!</h1>
+        <h1>hello world!</h1>
+        <div contentEditable={true} style={this.style}></div>
         <button onClick={this.loadComponent}>加载</button>
         {Text && Text}
       </div>
@@ -30,3 +32,7 @@ class App extends React.Component {
   }
 }
 ReactDOM.render(<App />, document.getElementById('root'))
+
+// module.hot.accept('./index',()=>{
+//   const value = las
+// })
