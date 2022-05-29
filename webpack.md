@@ -75,18 +75,6 @@ var moduleA = {
 
 社区开发了一些模块加载器，然后基于文件加载这些模块。
 
-> commonjs -- 同步模块
-
-1. 一个文件一个模块
-
-2. 每个模块具有单独作用域
-
-3. `module.exports` 导出模块成员
-
-4. `require` 函数引入模块
-
-同步加载，node 中使用，浏览器不支持，原因：同步加载会产生大量同步请求。
-
 > AMD (Async module definition) -- 异步模块
 
 `require.js` 模块加载器实现了 amd 规范
@@ -134,7 +122,19 @@ require('./moduleA', function(moduleA) {
 
 `AMD`、`CMD`、`UMD`和`system.js`，在日常开发中不太常用，需要使用时再去看使用文档即可，无需了解太多。
 
-> es module（ESM） --- js 标准模块
+### commonjs -- 同步模块
+
+1. 一个文件一个模块
+
+2. 每个模块具有单独作用域
+
+3. `module.exports` 导出模块成员
+
+4. `require` 函数引入模块
+
+同步加载，node 中使用，浏览器不支持，原因：同步加载会产生大量同步请求。
+
+### ESM js 标准模块
 
 ES6 在制定标准时，提出了`ES module`，目前可在大部分浏览器里直接使用，是最常用的模块化方案。
 
