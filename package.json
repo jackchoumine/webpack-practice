@@ -14,6 +14,7 @@
     "d": "webpack-dev-server --config webpack.config.js --colors",
     "bd": "webpack --config webpack.config.js --colors",
     "dm": "webpack-dev-server --config webpack.config.multi.js --colors",
+    "dmp": "webpack --config webpack.config.multi.js --colors",
     "start": "webpack-dev-server",
     "nun": "webpack-dev-server --config webpack.config.nunj.js",
     "nunb": "webpack --config webpack.config.njk.js --mode=production",

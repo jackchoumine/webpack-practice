@@ -2,7 +2,7 @@
  * @Description: webpack 配置
  * @Date: 2021-07-11 22:00:35 +0800
  * @Author: JackChou
- * @LastEditTime: 2022-05-30 03:08:48 +0800
+ * @LastEditTime: 2022-05-30 03:15:24 +0800
  * @LastEditors : JackChou
  */
 const glob = require('glob')
@@ -45,8 +45,8 @@ module.exports = {
     filename: '[name].js',
     path: resolve(__dirname, 'build'),
   },
-  mode: 'development',
-  // mode: 'production',
+  // mode: 'development',
+  mode: 'production',
   module: {
     rules: [
       {
@@ -96,17 +96,23 @@ module.exports = {
   //     },
   //   },
   // },
+  // NOTE 把所有公共模块提取到单独的文件中
   optimization: {
     splitChunks: {
-      minSize: 0, // 只有有引用，就分离
-      cacheGroups: {
-        commons: {
-          name: 'common', // 分离出来的文件
-          chunks: 'all',
-          minChunks: 3, // 最小引用次数为2 一个函数引用次数>=2，才分离
-        },
-      },
+      chunks: 'all',
     },
+  },
+  // optimization: {
+    // splitChunks: {
+    //   minSize: 1, // 只有有引用，就分离
+    //   cacheGroups: {
+    //     commons: {
+    //       name: 'common', // 分离出来的文件
+    //       chunks: 'all',
+    //       minChunks: 3, // 最小引用次数为2 一个函数引用次数>=2，才分离
+    //     },
+    //   },
+    // },
     // usedExports: true, // 只使用导出
     // minimize: true,// 删除不使用的代码
     // concatenateModules: true, // scope hosting
@@ -116,16 +122,16 @@ module.exports = {
     // 在package.json 中声明代码没有副作用
     // sideEffects:[''] // 指定具有副作用的代码
     // sideEffects
-    sideEffects: true,
-  },
-  watch: true,
-  devServer: {
-    contentBase: './build',
-    hot: true, // 自动刷新，会清除浏览器报错信息
-    // hotOnly: true, // 资源 HMR 失败才回退到 自动刷新
-    open: true,
-    // stats: '',
-    // stats: 'normal',
-  },
+    // sideEffects: true,
+  // },
+  // watch: true,
+  // devServer: {
+  //   contentBase: './build',
+  //   hot: true, // 自动刷新，会清除浏览器报错信息
+  //   // hotOnly: true, // 资源 HMR 失败才回退到 自动刷新
+  //   open: true,
+  //   // stats: '',
+  //   // stats: 'normal',
+  // },
   // stats: 'normal',
 }
